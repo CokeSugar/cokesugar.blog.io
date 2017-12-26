@@ -249,6 +249,155 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/26/20171226-NSString与TaggedPoint技术/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="haobaoliang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="郝宝亮个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/26/20171226-NSString与TaggedPoint技术/" itemprop="url">NSString与TaggedPoint技术</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-26T16:49:27+08:00">
+                2017-12-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Objective-C/" itemprop="url" rel="index">
+                    <span itemprop="name">Objective-C</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在学习iOS中的NSString时，看到了掘金上的一篇文章 <a href="https://juejin.im/post/5a38921b6fb9a04522079fa3" target="_blank" rel="noopener">一个毫无道理的iOS问题</a><br><img src="https://user-gold-cdn.xitu.io/2017/12/19/1606cfab6b3613b2?imageView2/0/w/1280/h/960/ignore-error/1" alt="image"></p>
+<p>提问：代码1和代码2的执行结过是什么？<br>刚开始在朋友圈看到这个问题，以为是指针重指向产生野指的问题。但是亲自编译了一下发现并不是。<br>测试后发现这段代码的问题是这样的：</p>
+<ul>
+<li>代码1执行后并不会崩溃，代码2执行后会崩溃。</li>
+<li>只有使用initWithUTF8String方法创建NSString会崩溃</li>
+<li>只有字符串的内容长度超过10字节才会奔溃崩溃</li>
+<li>代码放到子线程或者做延时操作都会崩溃</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/26/20171226-block引用计数问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -355,148 +504,6 @@
 <p>运行结果为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Block前person的引用计数-1 -&lt;Person: 0x1004002b0&gt; -0x7ffeefbff620 -0x1004002b0</span><br><span class="line">Block中person的引用计数-3 -&lt;Person: 0x1004002b0&gt; -0x1007114c0 -0x1004002b0</span><br><span class="line">Block后person的引用计数-3 -&lt;Person: 0x1004002b0&gt; -0x7ffeefbff620 -0x1004002b0 0x7ffeefbff610 -0x1004002b0</span><br></pre></td></tr></table></figure></p>
 <p>我们发现在ARC下 栈指针 0x7ffeefbff610 和 0x7ffeefbff620 中的存放的数据都是person的地址 0x1004002b0。而在 堆地址0x1007114c0 也引用一份person。<br>所以person的引用计数为3。</p>
 <p>所以在ARC模式下，如果block 引用局部变量，先将变量地址复制到栈上，在从栈上复制到堆上。（不知道对不对啊）</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/26/20171226-NSString与TaggedPoint技术/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="haobaoliang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="郝宝亮个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/26/20171226-NSString与TaggedPoint技术/" itemprop="url">NSString与TaggedPoint技术</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-26T16:49:27+08:00">
-                2017-12-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Objective-C/" itemprop="url" rel="index">
-                    <span itemprop="name">Objective-C</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>在学习iOS中的NSString时，看到了掘金上的一篇文章 <a href="https://juejin.im/post/5a38921b6fb9a04522079fa3" target="_blank" rel="noopener">一个毫无道理的iOS问题</a></p>
 
           
         

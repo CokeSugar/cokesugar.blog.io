@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="在学习iOS中的NSString时，看到了掘金上的一篇文章 一个毫无道理的iOS问题">
+<meta name="description" content="在学习iOS中的NSString时，看到了掘金上的一篇文章 一个毫无道理的iOS问题 提问：代码1和代码2的执行结过是什么？刚开始在朋友圈看到这个问题，以为是指针重指向产生野指的问题。但是亲自编译了一下发现并不是。测试后发现这段代码的问题是这样的：  代码1执行后并不会崩溃，代码2执行后会崩溃。 只有使用initWithUTF8String方法创建NSString会崩溃 只有字符串的内容长度超过1">
 <meta name="keywords" content="NSString TaggedPoint">
 <meta property="og:type" content="article">
 <meta property="og:title" content="NSString与TaggedPoint技术">
 <meta property="og:url" content="http://yoursite.com/2017/12/26/20171226-NSString与TaggedPoint技术/index.html">
 <meta property="og:site_name" content="郝宝亮个人博客">
-<meta property="og:description" content="在学习iOS中的NSString时，看到了掘金上的一篇文章 一个毫无道理的iOS问题">
+<meta property="og:description" content="在学习iOS中的NSString时，看到了掘金上的一篇文章 一个毫无道理的iOS问题 提问：代码1和代码2的执行结过是什么？刚开始在朋友圈看到这个问题，以为是指针重指向产生野指的问题。但是亲自编译了一下发现并不是。测试后发现这段代码的问题是这样的：  代码1执行后并不会崩溃，代码2执行后会崩溃。 只有使用initWithUTF8String方法创建NSString会崩溃 只有字符串的内容长度超过1">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-12-26T12:38:40.520Z">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2017/12/19/1606cfab6b3613b2?imageView2/0/w/1280/h/960/ignore-error/1">
+<meta property="og:updated_time" content="2017-12-26T12:44:32.392Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NSString与TaggedPoint技术">
-<meta name="twitter:description" content="在学习iOS中的NSString时，看到了掘金上的一篇文章 一个毫无道理的iOS问题">
+<meta name="twitter:description" content="在学习iOS中的NSString时，看到了掘金上的一篇文章 一个毫无道理的iOS问题 提问：代码1和代码2的执行结过是什么？刚开始在朋友圈看到这个问题，以为是指针重指向产生野指的问题。但是亲自编译了一下发现并不是。测试后发现这段代码的问题是这样的：  代码1执行后并不会崩溃，代码2执行后会崩溃。 只有使用initWithUTF8String方法创建NSString会崩溃 只有字符串的内容长度超过1">
+<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2017/12/19/1606cfab6b3613b2?imageView2/0/w/1280/h/960/ignore-error/1">
 
 
 
@@ -342,7 +344,14 @@
       
 
       
-        <p>在学习iOS中的NSString时，看到了掘金上的一篇文章 <a href="https://juejin.im/post/5a38921b6fb9a04522079fa3" target="_blank" rel="noopener">一个毫无道理的iOS问题</a></p>
+        <p>在学习iOS中的NSString时，看到了掘金上的一篇文章 <a href="https://juejin.im/post/5a38921b6fb9a04522079fa3" target="_blank" rel="noopener">一个毫无道理的iOS问题</a><br><img src="https://user-gold-cdn.xitu.io/2017/12/19/1606cfab6b3613b2?imageView2/0/w/1280/h/960/ignore-error/1" alt="image"></p>
+<p>提问：代码1和代码2的执行结过是什么？<br>刚开始在朋友圈看到这个问题，以为是指针重指向产生野指的问题。但是亲自编译了一下发现并不是。<br>测试后发现这段代码的问题是这样的：</p>
+<ul>
+<li>代码1执行后并不会崩溃，代码2执行后会崩溃。</li>
+<li>只有使用initWithUTF8String方法创建NSString会崩溃</li>
+<li>只有字符串的内容长度超过10字节才会奔溃崩溃</li>
+<li>代码放到子线程或者做延时操作都会崩溃</li>
+</ul>
 
       
     </div>
@@ -373,15 +382,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/12/26/20171226-block引用计数问题/" rel="next" title="block引用计数问题">
+                <i class="fa fa-chevron-left"></i> block引用计数问题
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/12/26/20171226-block引用计数问题/" rel="prev" title="block引用计数问题">
-                block引用计数问题 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
