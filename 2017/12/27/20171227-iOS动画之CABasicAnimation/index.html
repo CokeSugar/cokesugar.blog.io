@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="baoliang个人博客">
 <meta property="og:description" content="1.CABaseAnimation介绍CABaseAnimation介绍 是 CAPropertyAnimation的子类，简单控制CALayer层的属性慢慢改变，从而实现动画效果。使用方法animationWithKeyPath:对 CABasicAnimation进行实例化，并指定Layer的属性作为关键路径进行注册。例如： 1CABasicAnimation *anima = [CABasi">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-12-27T15:15:36.432Z">
+<meta property="og:updated_time" content="2017-12-27T15:18:31.295Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS动画之CABasicAnimation">
 <meta name="twitter:description" content="1.CABaseAnimation介绍CABaseAnimation介绍 是 CAPropertyAnimation的子类，简单控制CALayer层的属性慢慢改变，从而实现动画效果。使用方法animationWithKeyPath:对 CABasicAnimation进行实例化，并指定Layer的属性作为关键路径进行注册。例如： 1CABasicAnimation *anima = [CABasi">
@@ -362,7 +362,7 @@
         <p>1.CABaseAnimation介绍<br>CABaseAnimation介绍 是 CAPropertyAnimation的子类，简单控制CALayer层的属性慢慢改变，从而实现动画效果。使用方法animationWithKeyPath:对 CABasicAnimation进行实例化，并指定Layer的属性作为关键路径进行注册。例如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CABasicAnimation *anima = [CABasicAnimation animationWithKeyPath:@&quot;opacity&quot;];</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<p>相关属性和声明<br>| 属性 | 说明      |<br>|—|———–|<br>|duration | 动画时长|<br>|repeatCount     | 重复次数。不停重复设置为 HUGE_VALF|<br>|beginTime | 指定动画开始的时间。从开始延迟几秒的话，设置为[CACurren|tMediaTime() + 秒数] 的方式|<br>|timingFunction | 动画的速度变化|<br>|autoreverses | 动画结束时是否执行逆动画|<br>|fromValue | 起始值|<br>|toValue | 结束值|<br>|byValue | 结束值（相对值）|</p>
+<p>相关属性和声明<br>| 属性 | 说明      |<br>—|—|<br>duration | 动画时长<br>repeatCount     | 重复次数。不停重复设置为 HUGE_VALF<br>beginTime | 指定动画开始的时间。从开始延迟几秒的话，设置为[CACurren|tMediaTime() + 秒数] 的方式<br>timingFunction | 动画的速度变化<br>autoreverses | 动画结束时是否执行逆动画<br>fromValue | 起始值<br>toValue | 结束值<br>byValue | 结束值（相对值）</p>
 <p>一些常用的animationWithKeyPath值</p>
 <table>
 <thead>
