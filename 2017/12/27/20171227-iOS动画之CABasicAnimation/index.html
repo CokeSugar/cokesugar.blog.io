@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="baoliang个人博客">
 <meta property="og:description" content="1.CABaseAnimation介绍CABaseAnimation介绍 是 CAPropertyAnimation的子类，简单控制CALayer层的属性慢慢改变，从而实现动画效果。使用方法animationWithKeyPath:对 CABasicAnimation进行实例化，并指定Layer的属性作为关键路径进行注册。例如： 1CABasicAnimation *anima = [CABasi">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-12-27T13:15:13.482Z">
+<meta property="og:updated_time" content="2017-12-27T13:26:46.414Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS动画之CABasicAnimation">
 <meta name="twitter:description" content="1.CABaseAnimation介绍CABaseAnimation介绍 是 CAPropertyAnimation的子类，简单控制CALayer层的属性慢慢改变，从而实现动画效果。使用方法animationWithKeyPath:对 CABasicAnimation进行实例化，并指定Layer的属性作为关键路径进行注册。例如： 1CABasicAnimation *anima = [CABasi">
@@ -359,51 +359,16 @@
       
 
       
-        <h1 id="1-CABaseAnimation介绍"><a href="#1-CABaseAnimation介绍" class="headerlink" title="1.CABaseAnimation介绍"></a>1.CABaseAnimation介绍</h1><p>CABaseAnimation介绍 是 CAPropertyAnimation的子类，简单控制CALayer层的属性慢慢改变，从而实现动画效果。使用方法animationWithKeyPath:对 CABasicAnimation进行实例化，并指定Layer的属性作为关键路径进行注册。例如：</p>
+        <p>1.CABaseAnimation介绍<br>CABaseAnimation介绍 是 CAPropertyAnimation的子类，简单控制CALayer层的属性慢慢改变，从而实现动画效果。使用方法animationWithKeyPath:对 CABasicAnimation进行实例化，并指定Layer的属性作为关键路径进行注册。例如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CABasicAnimation *anima = [CABasicAnimation animationWithKeyPath:@&quot;opacity&quot;];</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<table>
-<thead>
-<tr>
-<th>属性</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>duration</td>
-<td>动画时长</td>
-</tr>
-<tr>
-<td>repeatCount</td>
-<td>重复次数。不停重复设置为 HUGE_VALF</td>
-</tr>
-<tr>
-<td>beginTime</td>
-<td>指定动画开始的时间。从开始延迟几秒的话，设置为[CACurrentMediaTime() + 秒数] 的方式</td>
-</tr>
-<tr>
-<td>timingFunction</td>
-<td>动画的速度变化</td>
-</tr>
-<tr>
-<td>autoreverses</td>
-<td>动画结束时是否执行逆动画</td>
-</tr>
-<tr>
-<td>fromValue</td>
-<td>起始值</td>
-</tr>
-<tr>
-<td>toValue</td>
-<td>结束值</td>
-</tr>
-<tr>
-<td>byValue</td>
-<td>结束值（相对值）</td>
-</tr>
-</tbody>
-</table>
+<p>相关属性和声明<br>属性 | 说明<br>—|—<br>duration | 动画时长<br>repeatCount     | 重复次数。不停重复设置为 HUGE_VALF<br>beginTime | 指定动画开始的时间。从开始延迟几秒的话，设置为[CACurrentMediaTime() + 秒数] 的方式<br>timingFunction | 动画的速度变化<br>autoreverses | 动画结束时是否执行逆动画<br>fromValue | 起始值<br>toValue | 结束值<br>byValue | 结束值（相对值）</p>
+<p>一些常用的animationWithKeyPath值<br>值 | 说明 | 使用形式<br>—|—<br>transform.scale | 比例转化 | @(0.8)<br>transform.scale.x | 宽的比例 | @(0.8)<br>transform.scale.y | 高的比例 | @(0.8)<br>transform.rotation.x | 围绕x轴旋转 | @(M_PI)<br>transform.rotation.y | 围绕y轴旋转 | @(M_PI)<br>transform.rotation.z | 围绕z轴旋转 | @(M_PI)<br>cornerRadius | 圆角的设置 | @(50)<br>backgroundColor | 背景颜色的变化 | (id)[UIColor purpleColor].CGColor<br>bounds | 大小，中心不变 | [NSValue valueWithCGRect:CGRectMake(0, 0, 200, 200)];<br>position | 位置(中心点的改变) | [NSValue valueWithCGPoint:CGPointMake(300, 300)];<br>contents | 内容，比如UIImageView的图片 | imageAnima.toValue = (id)[UIImage imageNamed:@”to”].CGImage;<br>opacity | 透明度 | @(0.7)<br>contentsRect.size.width | 横向拉伸缩放 | @(0.4)最好是0~1之间的</p>
+<p>2.CABasicAnimation的使用示例</p>
+<p>2.1.移动动画</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CABasicAnimation *anima = [CABasicAnimation animationWithKeyPath:@&quot;position&quot;];</span><br><span class="line">anima.fromValue = [NSValue valueWithCGPoint:CGPointMake(0, SCREEN_HEIGHT/2-75)];</span><br><span class="line">anima.toValue = [NSValue valueWithCGPoint:CGPointMake(SCREEN_WIDTH, SCREEN_HEIGHT/2-75)];</span><br><span class="line">anima.duration = 1.0f;</span><br><span class="line">anima.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];</span><br><span class="line">[_demoView.layer addAnimation:anima forKey:@&quot;positionAnimation&quot;];</span><br></pre></td></tr></table></figure>
+<p>2.2.透明度动画</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CABasicAnimation *anima = [CABasicAnimation animationWithKeyPath:@&quot;opacity&quot;];</span><br><span class="line">anima.fromValue = [NSNumber numberWithFloat:1.0f];</span><br><span class="line">anima.toValue = [NSNumber numberWithFloat:0.2f];</span><br><span class="line">anima.duration = 1.0f;</span><br><span class="line">[_demoView.layer addAnimation:anima forKey:@&quot;opacityAniamtion&quot;];</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -434,8 +399,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/26/20171226-Block引用计数问题/" rel="next" title="Block引用计数问题">
-                <i class="fa fa-chevron-left"></i> Block引用计数问题
+              <a href="/2017/12/26/20171226-NSString与TaggedPoint技术/" rel="next" title="NSString与TaggedPoint技术">
+                <i class="fa fa-chevron-left"></i> NSString与TaggedPoint技术
               </a>
             
           </div>
@@ -494,17 +459,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -580,22 +536,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-CABaseAnimation介绍"><span class="nav-number">1.</span> <span class="nav-text">1.CABaseAnimation介绍</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
