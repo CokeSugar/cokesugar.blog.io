@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[iOS动画之CABasicAnimation]]></title>
     <url>%2F2017%2F12%2F27%2F20171227-iOS%E5%8A%A8%E7%94%BB%E4%B9%8BCABasicAnimation%2F</url>
-    <content type="text"><![CDATA[1.CABaseAnimation介绍CABaseAnimation介绍 是 CAPropertyAnimation的子类，简单控制CALayer层的属性慢慢改变，从而实现动画效果。使用方法animationWithKeyPath:对 CABasicAnimation进行实例化，并指定Layer的属性作为关键路径进行注册。例如： 1CABasicAnimation *anima = [CABasicAnimation animationWithKeyPath:@&quot;opacity&quot;];]]></content>
+    <content type="text"><![CDATA[1.CABaseAnimation介绍CABaseAnimation介绍 是 CAPropertyAnimation的子类，简单控制CALayer层的属性慢慢改变，从而实现动画效果。使用方法animationWithKeyPath:对 CABasicAnimation进行实例化，并指定Layer的属性作为关键路径进行注册。例如： 1CABasicAnimation *anima = [CABasicAnimation animationWithKeyPath:@&quot;opacity&quot;]; 属性 说明 duration 动画时长 repeatCount 重复次数。不停重复设置为 HUGE_VALF beginTime 指定动画开始的时间。从开始延迟几秒的话，设置为[CACurrentMediaTime() + 秒数] 的方式 timingFunction 动画的速度变化 autoreverses 动画结束时是否执行逆动画 fromValue 起始值 toValue 结束值 byValue 结束值（相对值）]]></content>
       <tags>
         <tag>CABasicAnimation</tag>
       </tags>
