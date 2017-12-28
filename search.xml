@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[MRC环境下for循环给Block对象类型数组赋值]]></title>
+    <url>%2F2017%2F12%2F28%2F20171228-MRC%E7%8E%AF%E5%A2%83%E4%B8%8Bfor%E5%BE%AA%E7%8E%AF%E7%BB%99Block%E5%AF%B9%E8%B1%A1%E7%B1%BB%E5%9E%8B%E6%95%B0%E7%BB%84%E8%B5%8B%E5%80%BC%2F</url>
+    <content type="text"><![CDATA[首先，先让大家看一段代码，代码来源（http://blog.csdn.net/weidfyr/article/details/48138167#t5）1234567891011void function()&#123; int i; int (^blocks[10])(); //定义一个块对象类型的数组 for (i = 0; i &lt; 10; i++) &#123; //for循环给数组赋值 blocks[i] = ^&#123; return i; &#125;; &#125; for (i = 0; i &lt; 10; i++) &#123; //打印数组中的内容，就是每个数组存放的代码块的返回值 NSLog(@&quot;%d&quot;, blocks[i]()); &#125;&#125; 大家可以想一下代码在ARC和MRC环境下的运行结果分别是什么？]]></content>
+      <categories>
+        <category>Objective-C</category>
+      </categories>
+      <tags>
+        <tag>MRC</tag>
+        <tag>Block</tag>
+        <tag>Objective-C</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[iOS动画之CAKeyframeAnimation]]></title>
     <url>%2F2017%2F12%2F27%2F20171227-iOS%E5%8A%A8%E7%94%BB%E4%B9%8BCAKeyframeAnimation%2F</url>
     <content type="text"><![CDATA[1.CAKeyframeAnimation介绍CABasicAnimation和CAKeyFrameAnimation都是CAPropertyAnimation的子类，CABasicAnimation算是CAKeyFrameAnimation的 特殊情况。CAKeyFrameAnimation支持关键帧的属性动画，可以通过values属性指定多个关键帧，通过关键帧可以指定动画的各阶段的关键值。相关属性和说明values 关键帧数组上述的NSArray对象。里面的元素称为“关键帧”(keyframe)。动画对象会在指定的时间（duration）内，依次显示values数组中的每一个关键帧 path 路径轨迹path：作 用与values属性一样，同样是用于指定整个动画所经过的路径的,可以设置一个CGPathRef、CGMutablePathRef，让图层按照路径轨迹移动。path只对CALayer的anchorPoint和position起作用。注意：values与path是互斥的，当values与path同时指定时，path将会覆盖values keyTimes 关键帧所对应的时间点keyTimes：可以为对应的关键帧指定对应的时间点，其取值范围为0到1.0keyTimes中的每一个时间值都对应values中的每一帧。如果没有设置keyTimes，各个关键帧的时间是平分的 timeFunctions 时间函数timeFunctions：这个属性用以指定时间函数，类似于运动的加速度，有以下几种类型。 123451 kCAMediaTimingFunctionLinear//线性2 kCAMediaTimingFunctionEaseIn//淡入3 kCAMediaTimingFunctionEaseOut//淡出4 kCAMediaTimingFunctionEaseInEaseOut//淡入淡出5 kCAMediaTimingFunctionDefault//默认 calculationMode属性该属性决定了物体在每个子路径下是跳着走还是匀速走，跟timeFunctions属性有点类似 123451 const kCAAnimationLinear//线性，默认2 const kCAAnimationDiscrete//离散，无中间过程，但keyTimes设置的时间依旧生效，物体跳跃地出现在各个关键帧上3 const kCAAnimationPaced//平均，keyTimes跟timeFunctions失效4 const kCAAnimationCubic//平均，同上5 const kCAAnimationCubicPaced//平均，同上 2.CAKeyframeAnimation 实例2.1.values1234567891011CAKeyframeAnimation *anima = [CAKeyframeAnimation animationWithKeyPath:@&quot;position&quot;];NSValue *value0 = [NSValue valueWithCGPoint:CGPointMake(0, SCREEN_HEIGHT/2-50)];NSValue *value1 = [NSValue valueWithCGPoint:CGPointMake(SCREEN_WIDTH/3, SCREEN_HEIGHT/2-50)];NSValue *value2 = [NSValue valueWithCGPoint:CGPointMake(SCREEN_WIDTH/3, SCREEN_HEIGHT/2+50)];NSValue *value3 = [NSValue valueWithCGPoint:CGPointMake(SCREEN_WIDTH*2/3, SCREEN_HEIGHT/2+50)];NSValue *value4 = [NSValue valueWithCGPoint:CGPointMake(SCREEN_WIDTH*2/3, SCREEN_HEIGHT/2-50)];NSValue *value5 = [NSValue valueWithCGPoint:CGPointMake(SCREEN_WIDTH, SCREEN_HEIGHT/2-50)];anima.values = [NSArray arrayWithObjects:value0,value1,value2,value3,value4,value5, nil];anima.duration = 2.0f;anima.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];[_demoView.layer addAnimation:anima forKey:@&quot;keyFrameAnimation&quot;]; 2.2.path 12345CAKeyframeAnimation *anima = [CAKeyframeAnimation animationWithKeyPath:@&quot;position&quot;];UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(SCREEN_WIDTH/2-100, SCREEN_HEIGHT/2-100, 200, 200)];anima.path = path.CGPath;anima.duration = 2.0f;[_demoView.layer addAnimation:anima forKey:@&quot;pathAnimation&quot;];]]></content>

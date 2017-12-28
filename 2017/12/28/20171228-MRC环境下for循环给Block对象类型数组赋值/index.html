@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="CABasicAnimation,动画,iOS," />
+  <meta name="keywords" content="MRC,Block,Objective-C," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="1.CABaseAnimation介绍CABaseAnimation介绍 是 CAPropertyAnimation的子类，简单控制CALayer层的属性慢慢改变，从而实现动画效果。使用方法animationWithKeyPath:对 CABasicAnimation进行实例化，并指定Layer的属性作为关键路径进行注册。例如： 1CABasicAnimation *anima = [CABasi">
-<meta name="keywords" content="CABasicAnimation,动画,iOS">
+<meta name="description" content="首先，先让大家看一段代码，代码来源（http://blog.csdn.net/weidfyr/article/details/48138167#t5）">
+<meta name="keywords" content="MRC,Block,Objective-C">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS动画之CABasicAnimation">
-<meta property="og:url" content="http://yoursite.com/2017/12/27/20171227-iOS动画之CABasicAnimation/index.html">
+<meta property="og:title" content="MRC环境下for循环给Block对象类型数组赋值">
+<meta property="og:url" content="http://yoursite.com/2017/12/28/20171228-MRC环境下for循环给Block对象类型数组赋值/index.html">
 <meta property="og:site_name" content="baoliang个人博客">
-<meta property="og:description" content="1.CABaseAnimation介绍CABaseAnimation介绍 是 CAPropertyAnimation的子类，简单控制CALayer层的属性慢慢改变，从而实现动画效果。使用方法animationWithKeyPath:对 CABasicAnimation进行实例化，并指定Layer的属性作为关键路径进行注册。例如： 1CABasicAnimation *anima = [CABasi">
+<meta property="og:description" content="首先，先让大家看一段代码，代码来源（http://blog.csdn.net/weidfyr/article/details/48138167#t5）">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-12-28T03:27:14.079Z">
+<meta property="og:updated_time" content="2017-12-28T07:43:00.361Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS动画之CABasicAnimation">
-<meta name="twitter:description" content="1.CABaseAnimation介绍CABaseAnimation介绍 是 CAPropertyAnimation的子类，简单控制CALayer层的属性慢慢改变，从而实现动画效果。使用方法animationWithKeyPath:对 CABasicAnimation进行实例化，并指定Layer的属性作为关键路径进行注册。例如： 1CABasicAnimation *anima = [CABasi">
+<meta name="twitter:title" content="MRC环境下for循环给Block对象类型数组赋值">
+<meta name="twitter:description" content="首先，先让大家看一段代码，代码来源（http://blog.csdn.net/weidfyr/article/details/48138167#t5）">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/12/27/20171227-iOS动画之CABasicAnimation/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/12/28/20171228-MRC环境下for循环给Block对象类型数组赋值/"/>
 
 
 
 
 
-  <title>iOS动画之CABasicAnimation | baoliang个人博客</title>
+  <title>MRC环境下for循环给Block对象类型数组赋值 | baoliang个人博客</title>
   
 
 
@@ -297,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/27/20171227-iOS动画之CABasicAnimation/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/28/20171228-MRC环境下for循环给Block对象类型数组赋值/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="baoliang">
@@ -314,7 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">iOS动画之CABasicAnimation</h1>
+          <h1 class="post-title" itemprop="name headline">MRC环境下for循环给Block对象类型数组赋值</h1>
         
 
         <div class="post-meta">
@@ -326,8 +326,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-27T21:01:18+08:00">
-                2017-12-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-28T15:41:09+08:00">
+                2017-12-28
               </time>
             
 
@@ -349,8 +349,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
+                  <a href="/categories/Objective-C/" itemprop="url" rel="index">
+                    <span itemprop="name">Objective-C</span>
                   </a>
                 </span>
 
@@ -391,98 +391,8 @@
       
 
       
-        <p>1.CABaseAnimation介绍<br>CABaseAnimation介绍 是 CAPropertyAnimation的子类，简单控制CALayer层的属性慢慢改变，从而实现动画效果。使用方法animationWithKeyPath:对 CABasicAnimation进行实例化，并指定Layer的属性作为关键路径进行注册。例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CABasicAnimation *anima = [CABasicAnimation animationWithKeyPath:@&quot;opacity&quot;];</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>相关属性和声明<br>属性 | 说明<br>—|—<br>duration | 动画时长<br>repeatCount     | 重复次数。不停重复设置为 HUGE_VALF<br>beginTime | 指定动画开始的时间。从开始延迟几秒的话，设置为[CACurren|tMediaTime() + 秒数] 的方式<br>timingFunction | 动画的速度变化<br>autoreverses | 动画结束时是否执行逆动画<br>fromValue | 起始值<br>toValue | 结束值<br>byValue | 结束值（相对值）</p>
-<p>一些常用的animationWithKeyPath值</p>
-<table>
-<thead>
-<tr>
-<th>值</th>
-<th>说明</th>
-<th>使用形式</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>transform.scale</td>
-<td>比例转化</td>
-<td>@(0.8)</td>
-</tr>
-<tr>
-<td>transform.scale.x</td>
-<td>宽的比例</td>
-<td>@(0.8)</td>
-</tr>
-<tr>
-<td>transform.scale.y</td>
-<td>高的比例</td>
-<td>@(0.8)</td>
-</tr>
-<tr>
-<td>transform.rotation.x</td>
-<td>围绕x轴旋转</td>
-<td>@(M_PI)</td>
-</tr>
-<tr>
-<td>transform.rotation.y</td>
-<td>围绕y轴旋转</td>
-<td>@(M_PI)</td>
-</tr>
-<tr>
-<td>transform.rotation.z</td>
-<td>围绕z轴旋转</td>
-<td>@(M_PI)</td>
-</tr>
-<tr>
-<td>cornerRadius</td>
-<td>圆角的设置</td>
-<td>@(50)</td>
-</tr>
-<tr>
-<td>backgroundColor</td>
-<td>背景颜色的变化</td>
-<td>(id)[UIColor purpleColor].CGColor</td>
-</tr>
-<tr>
-<td>bounds</td>
-<td>大小，中心不变</td>
-<td>[NSValue valueWithCGRect:CGRectMake(0, 0, 200, 200)];</td>
-</tr>
-<tr>
-<td>position</td>
-<td>位置(中心点的改变)</td>
-<td>[NSValue valueWithCGPoint:CGPointMake(300, 300)];</td>
-</tr>
-<tr>
-<td>contents</td>
-<td>内容，比如UIImageView的图片</td>
-<td>imageAnima.toValue = (id)[UIImage imageNamed:@”to”].CGImage;</td>
-</tr>
-<tr>
-<td>opacity</td>
-<td>透明度</td>
-<td>@(0.7)</td>
-</tr>
-<tr>
-<td>contentsRect.size.width</td>
-<td>横向拉伸缩放</td>
-<td>@(0.4)最好是0~1之间的</td>
-</tr>
-</tbody>
-</table>
-<p>2.CABasicAnimation的使用示例</p>
-<p>2.1.移动动画</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CABasicAnimation *anima = [CABasicAnimation animationWithKeyPath:@&quot;position&quot;];</span><br><span class="line">anima.fromValue = [NSValue valueWithCGPoint:CGPointMake(0, SCREEN_HEIGHT/2-75)];</span><br><span class="line">anima.toValue = [NSValue valueWithCGPoint:CGPointMake(SCREEN_WIDTH, SCREEN_HEIGHT/2-75)];</span><br><span class="line">anima.duration = 1.0f;</span><br><span class="line">anima.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];</span><br><span class="line">[_demoView.layer addAnimation:anima forKey:@&quot;positionAnimation&quot;];</span><br></pre></td></tr></table></figure>
-<p>2.2.透明度动画</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CABasicAnimation *anima = [CABasicAnimation animationWithKeyPath:@&quot;opacity&quot;];</span><br><span class="line">anima.fromValue = [NSNumber numberWithFloat:1.0f];</span><br><span class="line">anima.toValue = [NSNumber numberWithFloat:0.2f];</span><br><span class="line">anima.duration = 1.0f;</span><br><span class="line">[_demoView.layer addAnimation:anima forKey:@&quot;opacityAniamtion&quot;];</span><br></pre></td></tr></table></figure>
-<p>2.3.缩放动画</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CABasicAnimation *anima = [CABasicAnimation animationWithKeyPath:@&quot;bounds&quot;];</span><br><span class="line">anima.toValue = [NSValue valueWithCGRect:CGRectMake(0, 0, 200, 100)];</span><br><span class="line">anima.duration = 1.0f;</span><br><span class="line">[_demoView.layer addAnimation:anima forKey:@&quot;scaleAnimation&quot;];</span><br><span class="line"></span><br><span class="line">//    CABasicAnimation *anima = [CABasicAnimation animationWithKeyPath:@&quot;transform.scale&quot;];//同上</span><br><span class="line">//    anima.toValue = [NSNumber numberWithFloat:2.0f];</span><br><span class="line">//    anima.duration = 1.0f;</span><br><span class="line">//    [_demoView.layer addAnimation:anima forKey:@&quot;scaleAnimation&quot;];</span><br></pre></td></tr></table></figure>
-<p>2.4.旋转动画</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">CABasicAnimation *anima = [CABasicAnimation animationWithKeyPath:@&quot;transform.rotation.z&quot;];//绕着z轴为矢量，进行旋转(@&quot;transform.rotation.z&quot;==@@&quot;transform.rotation&quot;)</span><br><span class="line">anima.toValue = [NSNumber numberWithFloat:M_PI];</span><br><span class="line">anima.duration = 1.0f;</span><br><span class="line">[_demoView.layer addAnimation:anima forKey:@&quot;rotateAnimation&quot;];</span><br><span class="line"></span><br><span class="line">//    //valueWithCATransform3D作用与layer</span><br><span class="line">//    CABasicAnimation *anima = [CABasicAnimation animationWithKeyPath:@&quot;transform&quot;];</span><br><span class="line">//    anima.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeRotation(M_PI, 0, 0, 1)];//绕着矢量（x,y,z）旋转</span><br><span class="line">//    anima.duration = 1.0f;</span><br><span class="line">//    //anima.repeatCount = MAXFLOAT;</span><br><span class="line">//    [_demoView.layer addAnimation:anima forKey:@&quot;rotateAnimation&quot;];</span><br></pre></td></tr></table></figure>
-<p>2.5.背景色动画</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CABasicAnimation *anima = [CABasicAnimation animationWithKeyPath:@&quot;backgroundColor&quot;];</span><br><span class="line">anima.toValue =(id) [UIColor greenColor].CGColor;</span><br><span class="line">anima.duration = 1.0f;</span><br><span class="line">[_demoView.layer addAnimation:anima forKey:@&quot;backgroundAnimation&quot;];</span><br></pre></td></tr></table></figure>
+        <p>首先，先让大家看一段代码，代码来源（<a href="http://blog.csdn.net/weidfyr/article/details/48138167#t5）" target="_blank" rel="noopener">http://blog.csdn.net/weidfyr/article/details/48138167#t5）</a><br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">void function()</span><br><span class="line">&#123;</span><br><span class="line">    int i;</span><br><span class="line">    int (^blocks[10])(); //定义一个块对象类型的数组</span><br><span class="line">    for (i = 0; i &lt; 10; i++) &#123; //for循环给数组赋值</span><br><span class="line">        blocks[i] = ^&#123; return i; &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    for (i = 0; i &lt; 10; i++) &#123; //打印数组中的内容，就是每个数组存放的代码块的返回值</span><br><span class="line">    NSLog(@&quot;%d&quot;, blocks[i]());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>大家可以想一下代码在ARC和MRC环境下的运行结果分别是什么？</p>
 
       
     </div>
@@ -500,11 +410,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/CABasicAnimation/" rel="tag"># CABasicAnimation</a>
+            <a href="/tags/MRC/" rel="tag"># MRC</a>
           
-            <a href="/tags/动画/" rel="tag"># 动画</a>
+            <a href="/tags/Block/" rel="tag"># Block</a>
           
-            <a href="/tags/iOS/" rel="tag"># iOS</a>
+            <a href="/tags/Objective-C/" rel="tag"># Objective-C</a>
           
         </div>
       
@@ -517,8 +427,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/26/20171226-Block引用计数问题/" rel="next" title="Block引用计数问题">
-                <i class="fa fa-chevron-left"></i> Block引用计数问题
+              <a href="/2017/12/27/20171227-iOS动画之CAKeyframeAnimation/" rel="next" title="iOS动画之CAKeyframeAnimation">
+                <i class="fa fa-chevron-left"></i> iOS动画之CAKeyframeAnimation
               </a>
             
           </div>
@@ -526,10 +436,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/12/27/20171227-iOS动画之CAKeyframeAnimation/" rel="prev" title="iOS动画之CAKeyframeAnimation">
-                iOS动画之CAKeyframeAnimation <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
