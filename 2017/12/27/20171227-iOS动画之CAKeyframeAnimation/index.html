@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="baoliang个人博客">
 <meta property="og:description" content="1.CAKeyframeAnimation介绍CABasicAnimation和CAKeyFrameAnimation都是CAPropertyAnimation的子类，CABasicAnimation算是CAKeyFrameAnimation的 特殊情况。CAKeyFrameAnimation支持关键帧的属性动画，可以通过values属性指定多个关键帧，通过关键帧可以指定动画的各阶段的关键值。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-12-28T02:35:17.802Z">
+<meta property="og:updated_time" content="2017-12-28T02:42:33.280Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS动画之CAKeyframeAnimation">
 <meta name="twitter:description" content="1.CAKeyframeAnimation介绍CABasicAnimation和CAKeyFrameAnimation都是CAPropertyAnimation的子类，CABasicAnimation算是CAKeyFrameAnimation的 特殊情况。CAKeyFrameAnimation支持关键帧的属性动画，可以通过values属性指定多个关键帧，通过关键帧可以指定动画的各阶段的关键值。">
@@ -382,8 +382,12 @@
 
       
         <p>1.CAKeyframeAnimation介绍<br>CABasicAnimation和CAKeyFrameAnimation都是CAPropertyAnimation的子类，CABasicAnimation算是CAKeyFrameAnimation的 特殊情况。CAKeyFrameAnimation支持关键帧的属性动画，可以通过values属性指定多个关键帧，通过关键帧可以指定动画的各阶段的关键值。<br><a id="more"></a><br>相关属性和说明<br><strong>values 关键帧数组</strong><br>上述的NSArray对象。里面的元素称为“关键帧”(keyframe)。<br>动画对象会在指定的时间（duration）内，依次显示values数组中的每一个关键帧</p>
-<p><strong>path 路径轨迹</strong><br>path：可以设置一个CGPathRef、CGMutablePathRef，让图层按照路径轨迹移动。<br>path只对CALayer的anchorPoint和position起作用。<br>注意：如果设置了path，那么values关键帧将被忽略</p>
-<p><strong>keyTimes：关键帧所对应的时间点</strong><br>keyTimes：可以为对应的关键帧指定对应的时间点，其取值范围为0到1.0<br>keyTimes中的每一个时间值都对应values中的每一帧。如果没有设置keyTimes，各个关键帧的时间是平分的</p>
+<p><strong>path 路径轨迹</strong><br>path：作 用与values属性一样，同样是用于指定整个动画所经过的路径的,可以设置一个CGPathRef、CGMutablePathRef，让图层按照路径轨迹移动。<br>path只对CALayer的anchorPoint和position起作用。<br>注意：values与path是互斥的，当values与path同时指定时，path将会覆盖values</p>
+<p><strong>keyTimes 关键帧所对应的时间点</strong><br>keyTimes：可以为对应的关键帧指定对应的时间点，其取值范围为0到1.0<br>keyTimes中的每一个时间值都对应values中的每一帧。如果没有设置keyTimes，各个关键帧的时间是平分的</p>
+<p><strong>timeFunctions 时间函数</strong><br>timeFunctions：这个属性用以指定时间函数，类似于运动的加速度，有以下几种类型。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1 kCAMediaTimingFunctionLinear//线性</span><br><span class="line">2 kCAMediaTimingFunctionEaseIn//淡入</span><br><span class="line">3 kCAMediaTimingFunctionEaseOut//淡出</span><br><span class="line">4 kCAMediaTimingFunctionEaseInEaseOut//淡入淡出</span><br><span class="line">5 kCAMediaTimingFunctionDefault//默认</span><br></pre></td></tr></table></figure>
+<p><strong>calculationMode属性</strong><br>该属性决定了物体在每个子路径下是跳着走还是匀速走，跟timeFunctions属性有点类似</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1 const kCAAnimationLinear//线性，默认</span><br><span class="line">2 const kCAAnimationDiscrete//离散，无中间过程，但keyTimes设置的时间依旧生效，物体跳跃地出现在各个关键帧上</span><br><span class="line">3 const kCAAnimationPaced//平均，keyTimes跟timeFunctions失效</span><br><span class="line">4 const kCAAnimationCubic//平均，同上</span><br><span class="line">5 const kCAAnimationCubicPaced//平均，同上</span><br></pre></td></tr></table></figure>
 
       
     </div>
