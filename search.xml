@@ -4,16 +4,22 @@
     <title><![CDATA[iOS动画之CAKeyframeAnimation]]></title>
     <url>%2F2017%2F12%2F27%2F20171227-iOS%E5%8A%A8%E7%94%BB%E4%B9%8BCAKeyframeAnimation%2F</url>
     <content type="text"><![CDATA[1.CAKeyframeAnimation介绍CABasicAnimation和CAKeyFrameAnimation都是CAPropertyAnimation的子类，CABasicAnimation算是CAKeyFrameAnimation的 特殊情况。CAKeyFrameAnimation支持关键帧的属性动画，可以通过values属性指定多个关键帧，通过关键帧可以指定动画的各阶段的关键值。相关属性和说明values 关键帧数组上述的NSArray对象。里面的元素称为“关键帧”(keyframe)。动画对象会在指定的时间（duration）内，依次显示values数组中的每一个关键帧 path 路径轨迹path：可以设置一个CGPathRef、CGMutablePathRef，让图层按照路径轨迹移动。path只对CALayer的anchorPoint和position起作用。注意：如果设置了path，那么values关键帧将被忽略 keyTimes：关键帧所对应的时间点keyTimes：可以为对应的关键帧指定对应的时间点，其取值范围为0到1.0keyTimes中的每一个时间值都对应values中的每一帧。如果没有设置keyTimes，各个关键帧的时间是平分的]]></content>
+      <categories>
+        <category>iOS</category>
+      </categories>
       <tags>
-        <tag>CAKeyframeAnimation</tag>
+        <tag>CAKeyframeAnimation 动画 iOS</tag>
       </tags>
   </entry>
   <entry>
     <title><![CDATA[iOS动画之CABasicAnimation]]></title>
     <url>%2F2017%2F12%2F27%2F20171227-iOS%E5%8A%A8%E7%94%BB%E4%B9%8BCABasicAnimation%2F</url>
     <content type="text"><![CDATA[1.CABaseAnimation介绍CABaseAnimation介绍 是 CAPropertyAnimation的子类，简单控制CALayer层的属性慢慢改变，从而实现动画效果。使用方法animationWithKeyPath:对 CABasicAnimation进行实例化，并指定Layer的属性作为关键路径进行注册。例如： 1CABasicAnimation *anima = [CABasicAnimation animationWithKeyPath:@&quot;opacity&quot;]; 相关属性和声明属性 | 说明—|—duration | 动画时长repeatCount | 重复次数。不停重复设置为 HUGE_VALFbeginTime | 指定动画开始的时间。从开始延迟几秒的话，设置为[CACurren|tMediaTime() + 秒数] 的方式timingFunction | 动画的速度变化autoreverses | 动画结束时是否执行逆动画fromValue | 起始值toValue | 结束值byValue | 结束值（相对值） 一些常用的animationWithKeyPath值 值 说明 使用形式 transform.scale 比例转化 @(0.8) transform.scale.x 宽的比例 @(0.8) transform.scale.y 高的比例 @(0.8) transform.rotation.x 围绕x轴旋转 @(M_PI) transform.rotation.y 围绕y轴旋转 @(M_PI) transform.rotation.z 围绕z轴旋转 @(M_PI) cornerRadius 圆角的设置 @(50) backgroundColor 背景颜色的变化 (id)[UIColor purpleColor].CGColor bounds 大小，中心不变 [NSValue valueWithCGRect:CGRectMake(0, 0, 200, 200)]; position 位置(中心点的改变) [NSValue valueWithCGPoint:CGPointMake(300, 300)]; contents 内容，比如UIImageView的图片 imageAnima.toValue = (id)[UIImage imageNamed:@”to”].CGImage; opacity 透明度 @(0.7) contentsRect.size.width 横向拉伸缩放 @(0.4)最好是0~1之间的 2.CABasicAnimation的使用示例 2.1.移动动画 123456CABasicAnimation *anima = [CABasicAnimation animationWithKeyPath:@&quot;position&quot;];anima.fromValue = [NSValue valueWithCGPoint:CGPointMake(0, SCREEN_HEIGHT/2-75)];anima.toValue = [NSValue valueWithCGPoint:CGPointMake(SCREEN_WIDTH, SCREEN_HEIGHT/2-75)];anima.duration = 1.0f;anima.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];[_demoView.layer addAnimation:anima forKey:@&quot;positionAnimation&quot;]; 2.2.透明度动画 12345CABasicAnimation *anima = [CABasicAnimation animationWithKeyPath:@&quot;opacity&quot;];anima.fromValue = [NSNumber numberWithFloat:1.0f];anima.toValue = [NSNumber numberWithFloat:0.2f];anima.duration = 1.0f;[_demoView.layer addAnimation:anima forKey:@&quot;opacityAniamtion&quot;]; 2.3.缩放动画 123456789CABasicAnimation *anima = [CABasicAnimation animationWithKeyPath:@&quot;bounds&quot;];anima.toValue = [NSValue valueWithCGRect:CGRectMake(0, 0, 200, 100)];anima.duration = 1.0f;[_demoView.layer addAnimation:anima forKey:@&quot;scaleAnimation&quot;];// CABasicAnimation *anima = [CABasicAnimation animationWithKeyPath:@&quot;transform.scale&quot;];//同上// anima.toValue = [NSNumber numberWithFloat:2.0f];// anima.duration = 1.0f;// [_demoView.layer addAnimation:anima forKey:@&quot;scaleAnimation&quot;]; 2.4.旋转动画 1234567891011CABasicAnimation *anima = [CABasicAnimation animationWithKeyPath:@&quot;transform.rotation.z&quot;];//绕着z轴为矢量，进行旋转(@&quot;transform.rotation.z&quot;==@@&quot;transform.rotation&quot;)anima.toValue = [NSNumber numberWithFloat:M_PI];anima.duration = 1.0f;[_demoView.layer addAnimation:anima forKey:@&quot;rotateAnimation&quot;];// //valueWithCATransform3D作用与layer// CABasicAnimation *anima = [CABasicAnimation animationWithKeyPath:@&quot;transform&quot;];// anima.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeRotation(M_PI, 0, 0, 1)];//绕着矢量（x,y,z）旋转// anima.duration = 1.0f;// //anima.repeatCount = MAXFLOAT;// [_demoView.layer addAnimation:anima forKey:@&quot;rotateAnimation&quot;]; 2.5.背景色动画 1234CABasicAnimation *anima = [CABasicAnimation animationWithKeyPath:@&quot;backgroundColor&quot;];anima.toValue =(id) [UIColor greenColor].CGColor;anima.duration = 1.0f;[_demoView.layer addAnimation:anima forKey:@&quot;backgroundAnimation&quot;];]]></content>
+      <categories>
+        <category>iOS</category>
+      </categories>
       <tags>
-        <tag>CABasicAnimation</tag>
+        <tag>CABasicAnimation 动画 iOS</tag>
       </tags>
   </entry>
   <entry>
