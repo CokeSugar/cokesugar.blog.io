@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[20171229-NSString属性copy和strong]]></title>
+    <url>%2F2017%2F12%2F29%2F20171229-NSString%E5%B1%9E%E6%80%A7copy%E5%92%8Cstrong%2F</url>
+    <content type="text"><![CDATA[我们在编码中用到NSString类型变量时，都使用的是copy。但是也一直没有弄懂为什么用copy。测试 1234567891011121314151617181920212223#import &lt;Foundation/Foundation.h&gt;@interface TestStringClass :NSObject@property (nonatomic, strong) NSString* strongString;@property (nonatomic, copy) NSString* copyedString;@end@implementation TestStringClass- (void)test &#123;NSString *string = [NSString stringWithFormat:@&quot;1234&quot;];self.strongString = string;self.copyedString = string;NSLog(@&quot;origin string: %p, %p&quot;, string, &amp;string);NSLog(@&quot;strong string: %p, %p&quot;, _strongString, &amp;_strongString);NSLog(@&quot;copy string: %p, %p&quot;, _copyedString, &amp;_copyedString);&#125;@endint main(int argc, const char * argv[]) &#123;@autoreleasepool &#123;TestStringClass *testStringClass = [[TestStringClass alloc] init];[testStringClass test];&#125;return 0;&#125; 运行结果为： 123origin string: 0x63626135, 0x7ffeefbff5b8strong string: 0x63626135, 0x100615ab8copy string: 0x63626135, 0x100615ac0 根据运行结果可以看出，不管是strong还是copy属性的对象，其指向的地址都是同一个地址：0x63626135，即为string指向的地址。我们把string由不可变改为可变对象，看看会是什么结果。 123456789- (void)test &#123;//NSString *string = [NSString stringWithFormat:@&quot;1234&quot;];NSMutableString *string = [NSMutableString stringWithFormat:@&quot;1234&quot;];self.strongString = string;self.copyedString = string;NSLog(@&quot;origin string: %p, %p&quot;, string, &amp;string);NSLog(@&quot;strong string: %p, %p&quot;, _strongString, &amp;_strongString);NSLog(@&quot;copy string: %p, %p&quot;, _copyedString, &amp;_copyedString);&#125; 运行结果为： 123origin string: 0x10053c8d0, 0x7ffeefbff5b8strong string: 0x10053c8d0, 0x10053c818copy string: 0x3433323145, 0x10053c820 可以看出，此时copy属性字符串已不再指向string字符串对象，而是深拷贝了string字符串，并让_copyedString对象指向这个字符串。 而上面的例子可以看出：1.当源字符串是NSString时，由于字符串是不可变的，所以，不管是strong还是copy属性的对象，都是指向源对象，copy操作只是做了次浅拷贝。 2.当源字符串是NSMutableString时，strong属性只是增加了源字符串的引用计数，而copy属性则是对源字符串做了次深拷贝，产生一个新的对象，且copy属性对象指向这个新的对象。另外需要注意的是，这个copy属性对象的类型始终是NSString，而不是NSMutableString，因此其是不可变的。]]></content>
+      <categories>
+        <category>Objective-C</category>
+      </categories>
+      <tags>
+        <tag>NSString</tag>
+        <tag>property</tag>
+        <tag>copy</tag>
+        <tag>strong</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[runtime如何实现weak属性]]></title>
     <url>%2F2017%2F12%2F28%2F20171228-runtime%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0weak%E5%B1%9E%E6%80%A7%2F</url>
     <content type="text"><![CDATA[OC 中的 weak 属性是怎么实现的，为什么在对象释放后会自动变成 nil ？经百度，有个博客（博客地址）给出了一个答案。runtime 对注册的类， 会进行布局，对于 weak 对象会放入一个 hash 表中。 用 weak 指向的对象内存地址作为 key，当此对象的引用计数为 0 的时候会 dealloc，假如 weak 指向的对象内存地址是 a ，那么就会以 a 为键， 在这个 weak 表中搜索，找到所有以 a 为键的 weak 对象，从而设置为 nil 。 推荐一篇博客，写的很详细http://blog.csdn.net/iJason92/article/details/72808387]]></content>
@@ -70,6 +84,7 @@
         <category>Objective-C</category>
       </categories>
       <tags>
+        <tag>NSString</tag>
         <tag>TaggedPoint</tag>
       </tags>
   </entry>
