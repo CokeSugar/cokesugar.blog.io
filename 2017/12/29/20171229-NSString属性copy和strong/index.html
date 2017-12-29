@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="我们在编码中用到NSString类型变量时，都使用的是copy。但是也一直没有弄懂为什么用copy。">
+<meta name="description" content="我们在编码中用到NSString类型变量时，都使用的是copy。但是也一直没有弄懂为什么用copy。测试 1234567891011121314151617181920212223#import &amp;lt;Foundation/Foundation.h&amp;gt;@interface TestStringClass :NSObject@property (nonatomic, strong) NSStr">
 <meta name="keywords" content="NSString,property,copy,strong">
 <meta property="og:type" content="article">
 <meta property="og:title" content="NSString属性copy和strong">
 <meta property="og:url" content="http://yoursite.com/2017/12/29/20171229-NSString属性copy和strong/index.html">
 <meta property="og:site_name" content="baoliang个人博客">
-<meta property="og:description" content="我们在编码中用到NSString类型变量时，都使用的是copy。但是也一直没有弄懂为什么用copy。">
+<meta property="og:description" content="我们在编码中用到NSString类型变量时，都使用的是copy。但是也一直没有弄懂为什么用copy。测试 1234567891011121314151617181920212223#import &amp;lt;Foundation/Foundation.h&amp;gt;@interface TestStringClass :NSObject@property (nonatomic, strong) NSStr">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-12-29T03:57:54.403Z">
+<meta property="og:updated_time" content="2017-12-29T06:59:45.317Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NSString属性copy和strong">
-<meta name="twitter:description" content="我们在编码中用到NSString类型变量时，都使用的是copy。但是也一直没有弄懂为什么用copy。">
+<meta name="twitter:description" content="我们在编码中用到NSString类型变量时，都使用的是copy。但是也一直没有弄懂为什么用copy。测试 1234567891011121314151617181920212223#import &amp;lt;Foundation/Foundation.h&amp;gt;@interface TestStringClass :NSObject@property (nonatomic, strong) NSStr">
 
 
 
@@ -391,7 +391,7 @@
       
 
       
-        <p>我们在编码中用到NSString类型变量时，都使用的是copy。但是也一直没有弄懂为什么用copy。<br><a id="more"></a><br>测试</p>
+        <p>我们在编码中用到NSString类型变量时，都使用的是copy。但是也一直没有弄懂为什么用copy。<br>测试</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#import &lt;Foundation/Foundation.h&gt;</span><br><span class="line">@interface TestStringClass :NSObject</span><br><span class="line">@property (nonatomic, strong) NSString* strongString;</span><br><span class="line">@property (nonatomic, copy) NSString* copyedString;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation TestStringClass</span><br><span class="line">- (void)test &#123;</span><br><span class="line">    NSString *string = [NSString stringWithFormat:@&quot;1234&quot;];</span><br><span class="line">    self.strongString = string;</span><br><span class="line">    self.copyedString = string;</span><br><span class="line">    NSLog(@&quot;origin string: %p, %p&quot;, string, &amp;string);</span><br><span class="line">    NSLog(@&quot;strong string: %p, %p&quot;, _strongString, &amp;_strongString);</span><br><span class="line">    NSLog(@&quot;copy string: %p, %p&quot;, _copyedString, &amp;_copyedString);</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br><span class="line">int main(int argc, const char * argv[]) &#123;</span><br><span class="line">    @autoreleasepool &#123;</span><br><span class="line">        TestStringClass *testStringClass = [[TestStringClass alloc] init];</span><br><span class="line">        [testStringClass test];</span><br><span class="line">    &#125;</span><br><span class="line">return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>运行结果为：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">origin string: 0x63626135, 0x7ffeefbff5b8</span><br><span class="line">strong string: 0x63626135, 0x100615ab8</span><br><span class="line">copy string: 0x63626135, 0x100615ac0</span><br></pre></td></tr></table></figure>

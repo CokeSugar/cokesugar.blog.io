@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="首先，先让大家看一段代码，代码来源（http://blog.csdn.net/weidfyr/article/details/48138167#t5）">
+<meta name="description" content="首先，先让大家看一段代码，代码来源（http://blog.csdn.net/weidfyr/article/details/48138167#t5） 1234567891011void function()&amp;#123;    int i;    int (^blocks[10])(); //定义一个块对象类型的数组    for (i = 0; i &amp;lt; 10; i++) &amp;#123; //">
 <meta name="keywords" content="Block,MRC,Objective-C">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MRC环境下for循环给Block对象类型数组赋值">
 <meta property="og:url" content="http://yoursite.com/2017/12/28/20171228-MRC环境下for循环给Block对象类型数组赋值/index.html">
 <meta property="og:site_name" content="baoliang个人博客">
-<meta property="og:description" content="首先，先让大家看一段代码，代码来源（http://blog.csdn.net/weidfyr/article/details/48138167#t5）">
+<meta property="og:description" content="首先，先让大家看一段代码，代码来源（http://blog.csdn.net/weidfyr/article/details/48138167#t5） 1234567891011void function()&amp;#123;    int i;    int (^blocks[10])(); //定义一个块对象类型的数组    for (i = 0; i &amp;lt; 10; i++) &amp;#123; //">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-12-28T07:43:00.361Z">
+<meta property="og:updated_time" content="2017-12-29T07:00:08.898Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MRC环境下for循环给Block对象类型数组赋值">
-<meta name="twitter:description" content="首先，先让大家看一段代码，代码来源（http://blog.csdn.net/weidfyr/article/details/48138167#t5）">
+<meta name="twitter:description" content="首先，先让大家看一段代码，代码来源（http://blog.csdn.net/weidfyr/article/details/48138167#t5） 1234567891011void function()&amp;#123;    int i;    int (^blocks[10])(); //定义一个块对象类型的数组    for (i = 0; i &amp;lt; 10; i++) &amp;#123; //">
 
 
 
@@ -391,7 +391,8 @@
       
 
       
-        <p>首先，先让大家看一段代码，代码来源（<a href="http://blog.csdn.net/weidfyr/article/details/48138167#t5）" target="_blank" rel="noopener">http://blog.csdn.net/weidfyr/article/details/48138167#t5）</a><br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">void function()</span><br><span class="line">&#123;</span><br><span class="line">    int i;</span><br><span class="line">    int (^blocks[10])(); //定义一个块对象类型的数组</span><br><span class="line">    for (i = 0; i &lt; 10; i++) &#123; //for循环给数组赋值</span><br><span class="line">        blocks[i] = ^&#123; return i; &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    for (i = 0; i &lt; 10; i++) &#123; //打印数组中的内容，就是每个数组存放的代码块的返回值</span><br><span class="line">    NSLog(@&quot;%d&quot;, blocks[i]());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <p>首先，先让大家看一段代码，代码来源（<a href="http://blog.csdn.net/weidfyr/article/details/48138167#t5）" target="_blank" rel="noopener">http://blog.csdn.net/weidfyr/article/details/48138167#t5）</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">void function()</span><br><span class="line">&#123;</span><br><span class="line">    int i;</span><br><span class="line">    int (^blocks[10])(); //定义一个块对象类型的数组</span><br><span class="line">    for (i = 0; i &lt; 10; i++) &#123; //for循环给数组赋值</span><br><span class="line">        blocks[i] = ^&#123; return i; &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    for (i = 0; i &lt; 10; i++) &#123; //打印数组中的内容，就是每个数组存放的代码块的返回值</span><br><span class="line">    NSLog(@&quot;%d&quot;, blocks[i]());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>大家可以想一下代码在ARC和MRC环境下的运行结果分别是什么？</p>
 
       
