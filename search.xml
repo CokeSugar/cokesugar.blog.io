@@ -47,8 +47,8 @@
       </categories>
       <tags>
         <tag>Block</tag>
-        <tag>MRC</tag>
         <tag>Objective-C</tag>
+        <tag>MRC</tag>
       </tags>
   </entry>
   <entry>
@@ -59,9 +59,9 @@
         <category>iOS</category>
       </categories>
       <tags>
+        <tag>CAKeyframeAnimation</tag>
         <tag>动画</tag>
         <tag>iOS</tag>
-        <tag>CAKeyframeAnimation</tag>
       </tags>
   </entry>
   <entry>
@@ -72,9 +72,9 @@
         <category>iOS</category>
       </categories>
       <tags>
-        <tag>CABasicAnimation</tag>
         <tag>动画</tag>
         <tag>iOS</tag>
+        <tag>CABasicAnimation</tag>
       </tags>
   </entry>
   <entry>
