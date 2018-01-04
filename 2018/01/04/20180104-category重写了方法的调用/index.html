@@ -88,7 +88,7 @@
 <meta property="og:description" content="MyClass123456789101112131415#import &amp;lt;Foundation/Foundation.h&amp;gt;@interface MyClass : NSObject@property(nonatomic,copy)NSString *name;- (void)printName;@end#import &amp;quot;MyClass.h&amp;quot;@implementati">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/users/inke/Desktop/1515035823765.jpg">
-<meta property="og:updated_time" content="2018-01-04T03:29:21.110Z">
+<meta property="og:updated_time" content="2018-01-04T07:48:59.921Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="category重写了方法的调用">
 <meta name="twitter:description" content="MyClass123456789101112131415#import &amp;lt;Foundation/Foundation.h&amp;gt;@interface MyClass : NSObject@property(nonatomic,copy)NSString *name;- (void)printName;@end#import &amp;quot;MyClass.h&amp;quot;@implementati">
@@ -409,7 +409,7 @@
 <p>可以方法列表中有3个printName，实际调用时，调用的是后添加的方法，即后添加的方法在方法列表methodLists的这个数组的顶部。所以objc_msgSend遍历方法列表查找SEL 对应的IMP时，会先找到分类重写的那个，调用执行。然后添加到缓存列表中，这样主类方法实现永远也不会调到。</p>
 <p>那分类load 的顺序是怎么确定的呢？<br>在Xcode中找到buildPhases-&gt;Compile Sources。 如图：<br><img src="/users/inke/Desktop/1515035823765.jpg" alt="image"></p>
 <p>总结一句话：类的加载顺序，决定方法的添加顺序，调用的时候，后添加的方法会先被找到，所以调用的始终是后加载的类的方法实现。</p>
-<p>参考：<br><a href="http://blog.csdn.net/JaimeCool/article/details/76071630?locationNum=2" target="_blank" rel="noopener">http://blog.csdn.net/JaimeCool/article/details/76071630?locationNum=2</a></p>
+<p>参考：<br><a href="http://blog.csdn.net/JaimeCool/article/details/76071630?locationNum=2" target="_blank" rel="noopener">http://blog.csdn.net/JaimeCool/article/details/76071630?locationNum=2</a><br><a href="https://tech.meituan.com/DiveIntoCategory.html" target="_blank" rel="noopener">https://tech.meituan.com/DiveIntoCategory.html</a></p>
 
       
     </div>
