@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="LeetCode," />
+  <meta name="keywords" content="Objective-C,assign," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="https://leetcode.com/problems/trapping-rain-water/description/Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it is able to trap af">
-<meta name="keywords" content="LeetCode">
+<meta name="description" content="转自：https://www.jianshu.com/p/14e947dab4f9用assign修饰object类型会怎样？在我们的编码过程中已经养成了使用assign修复基本数据类型的良好习惯，我们不会去使用assign修饰对象类型属性，但是如果用assign去修复对象类型会怎样呢，你可能会有以下猜测： 1.编译会报错；2.编译不报错，运行正常；3.编译不报错，运行不正常； 开始实验 首先定义一">
+<meta name="keywords" content="Objective-C,assign">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[LeetCode]42.Trapping Rain Water">
-<meta property="og:url" content="http://yoursite.com/2018/01/02/20180102-LeetCode-42-Trapping-Rain-Water/index.html">
+<meta property="og:title" content="用assign修饰object类型会怎样？">
+<meta property="og:url" content="http://yoursite.com/2018/01/05/20180105-用assign修饰object类型会怎样？/index.html">
 <meta property="og:site_name" content="baoliang个人博客">
-<meta property="og:description" content="https://leetcode.com/problems/trapping-rain-water/description/Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it is able to trap af">
+<meta property="og:description" content="转自：https://www.jianshu.com/p/14e947dab4f9用assign修饰object类型会怎样？在我们的编码过程中已经养成了使用assign修复基本数据类型的良好习惯，我们不会去使用assign修饰对象类型属性，但是如果用assign去修复对象类型会怎样呢，你可能会有以下猜测： 1.编译会报错；2.编译不报错，运行正常；3.编译不报错，运行不正常； 开始实验 首先定义一">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-01-02T08:24:30.206Z">
+<meta property="og:updated_time" content="2018-01-05T07:26:51.739Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[LeetCode]42.Trapping Rain Water">
-<meta name="twitter:description" content="https://leetcode.com/problems/trapping-rain-water/description/Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it is able to trap af">
+<meta name="twitter:title" content="用assign修饰object类型会怎样？">
+<meta name="twitter:description" content="转自：https://www.jianshu.com/p/14e947dab4f9用assign修饰object类型会怎样？在我们的编码过程中已经养成了使用assign修复基本数据类型的良好习惯，我们不会去使用assign修饰对象类型属性，但是如果用assign去修复对象类型会怎样呢，你可能会有以下猜测： 1.编译会报错；2.编译不报错，运行正常；3.编译不报错，运行不正常； 开始实验 首先定义一">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/01/02/20180102-LeetCode-42-Trapping-Rain-Water/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/01/05/20180105-用assign修饰object类型会怎样？/"/>
 
 
 
 
 
-  <title>[LeetCode]42.Trapping Rain Water | baoliang个人博客</title>
+  <title>用assign修饰object类型会怎样？ | baoliang个人博客</title>
   
 
 
@@ -297,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/02/20180102-LeetCode-42-Trapping-Rain-Water/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/05/20180105-用assign修饰object类型会怎样？/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="baoliang">
@@ -314,7 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">[LeetCode]42.Trapping Rain Water</h1>
+          <h1 class="post-title" itemprop="name headline">用assign修饰object类型会怎样？</h1>
         
 
         <div class="post-meta">
@@ -326,8 +326,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-02T16:20:21+08:00">
-                2018-01-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-05T15:25:38+08:00">
+                2018-01-05
               </time>
             
 
@@ -349,8 +349,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
-                    <span itemprop="name">LeetCode</span>
+                  <a href="/categories/Objective-C/" itemprop="url" rel="index">
+                    <span itemprop="name">Objective-C</span>
                   </a>
                 </span>
 
@@ -391,9 +391,22 @@
       
 
       
-        <p><a href="https://leetcode.com/problems/trapping-rain-water/description/" target="_blank" rel="noopener">https://leetcode.com/problems/trapping-rain-water/description/</a><br>Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it is able to trap after raining.</p>
-<p>For example,<br>Given [0,1,0,2,1,0,1,3,2,1,2,1], return 6.</p>
-<p>The above elevation map is represented by array [0,1,0,2,1,0,1,3,2,1,2,1]. In this case, 6 units of rain water (blue section) are being trapped. Thanks Marcos for contributing this image!</p>
+        <p>转自：<a href="https://www.jianshu.com/p/14e947dab4f9" target="_blank" rel="noopener">https://www.jianshu.com/p/14e947dab4f9</a><br>用assign修饰object类型会怎样？<br>在我们的编码过程中已经养成了使用assign修复基本数据类型的良好习惯，我们不会去使用assign修饰对象类型属性，但是如果用assign去修复对象类型会怎样呢，你可能会有以下猜测：</p>
+<p>1.编译会报错；<br>2.编译不报错，运行正常；<br>3.编译不报错，运行不正常；</p>
+<p>开始实验</p>
+<p>首先定义一个简单的object类型，重写dealloc方便查看对象的释放</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">@interface TestObject : NSObject</span><br><span class="line"></span><br><span class="line">@property (nonatomic, assign) NSInteger age;</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@implementation TestObject</span><br><span class="line"></span><br><span class="line">- (void)dealloc &#123;</span><br><span class="line">NSLog(@&quot;%s&quot;, __FUNCTION__);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@interface BasicViewController : BaseViewController</span><br><span class="line"></span><br><span class="line">@property (nonatomic ,assign) TestObject *property1;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<p>测试一</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- (void)test &#123;</span><br><span class="line">self.property1 = [TestObject new];</span><br><span class="line">self.property1.age = 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>测试二</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- (void)test &#123;</span><br><span class="line">TestObject *obj = [TestObject new];</span><br><span class="line">self.property1 = obj;</span><br><span class="line">self.property1.age = 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>实验结果和分析</p>
+<p>测试一</p>
+<p>结果：测试一会在self.property1 = [TestObject new];这一行报出警告，单步调试后发现TestObject对象会在创建完以后被释放，所以下面self.property1.age = 1属性赋值将直接引发crash：EXC_BAD_ACCESS，这就是是所谓的野指针。</p>
+<p>分析：因为TestObject new对象创建出来没有任何强指针指向它，所以创建完以后立即会被释放了，这时候self.property1指针指向的地方已经不可用，所以就成了野指针。</p>
+<p>测试二</p>
+<p>结果：编译正常没有警告，运行正常也没有报错，但是在test方法调用之后如果你再去调用属性property1同样会引发EXC_BAD_ACCESS。</p>
+<p>分析：因为obj是test方法内的临时变量，ARC模式下编译器会在test方法的末尾调用obj release，所以一旦test方法执行完毕以后，该临时变量就会被释放，此时self.property1将变为野指针。由于这种情况下在编译阶段我们的代码都不会有任何的警告，而运行时该属性变为野指针之后，我们在任何地方调用就会引发野指针崩溃，这是很危险的。在快速编码的时候，很有可能由于我们的复制粘贴属性的定义而把object类型属性用assign修饰，因为曾经就遇到过同事留下的这种坑，从逻辑上找根本找不错错误，仔细检视代码才发现了这个低级错误</p>
 
       
     </div>
@@ -411,7 +424,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+            <a href="/tags/Objective-C/" rel="tag"># Objective-C</a>
+          
+            <a href="/tags/assign/" rel="tag"># assign</a>
           
         </div>
       
@@ -424,8 +439,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/29/20171229-NSString和NSMutableString分别使用copy和mutablecopy/" rel="next" title="NSString和NSMutableString分别使用copy和mutablecopy">
-                <i class="fa fa-chevron-left"></i> NSString和NSMutableString分别使用copy和mutablecopy
+              <a href="/2018/01/05/20180105-一个Objective-C对象的内存结构发布/" rel="next" title="一个Objective-C对象的内存结构发布">
+                <i class="fa fa-chevron-left"></i> 一个Objective-C对象的内存结构发布
               </a>
             
           </div>
@@ -433,10 +448,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/01/04/20180104-category重写了方法的调用/" rel="prev" title="category重写了方法的调用">
-                category重写了方法的调用 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
