@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[内存管理方式]]></title>
     <url>%2F2018%2F01%2F07%2F20180107-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E6%96%B9%E5%BC%8F%2F</url>
-    <content type="text"><![CDATA[先立个flag，今晚上搞懂操作系统的内存管理方式，包括块式、页式、段式等。]]></content>
+    <content type="text"><![CDATA[先立个flag，明天搞懂操作系统的内存管理方式，包括块式、页式、段式等。]]></content>
       <categories>
         <category>操作系统</category>
       </categories>
@@ -43,8 +43,8 @@
         <category>Objective-C</category>
       </categories>
       <tags>
-        <tag>Objective-C</tag>
         <tag>iOS</tag>
+        <tag>Objective-C</tag>
         <tag>category</tag>
       </tags>
   </entry>
@@ -105,8 +105,8 @@
         <category>Objective-C</category>
       </categories>
       <tags>
-        <tag>Objective-C</tag>
         <tag>iOS</tag>
+        <tag>Objective-C</tag>
       </tags>
   </entry>
   <entry>
@@ -117,8 +117,8 @@
         <category>Objective-C</category>
       </categories>
       <tags>
-        <tag>MRC</tag>
         <tag>Block</tag>
+        <tag>MRC</tag>
         <tag>Objective-C</tag>
       </tags>
   </entry>
@@ -130,9 +130,9 @@
         <category>iOS</category>
       </categories>
       <tags>
+        <tag>CAKeyframeAnimation</tag>
         <tag>动画</tag>
         <tag>iOS</tag>
-        <tag>CAKeyframeAnimation</tag>
       </tags>
   </entry>
   <entry>
@@ -143,9 +143,9 @@
         <category>iOS</category>
       </categories>
       <tags>
-        <tag>CABasicAnimation</tag>
         <tag>动画</tag>
         <tag>iOS</tag>
+        <tag>CABasicAnimation</tag>
       </tags>
   </entry>
   <entry>
