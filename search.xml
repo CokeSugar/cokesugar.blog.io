@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[内存管理方式]]></title>
+    <url>%2F2018%2F01%2F07%2F20180107-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E6%96%B9%E5%BC%8F%2F</url>
+    <content type="text"><![CDATA[先立个flag，今晚上搞懂操作系统的内存管理方式，包括块式、页式、段式等。]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>操作系统</tag>
+        <tag>内存管理</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[用assign修饰object类型会怎样？]]></title>
     <url>%2F2018%2F01%2F05%2F20180105-%E7%94%A8assign%E4%BF%AE%E9%A5%B0object%E7%B1%BB%E5%9E%8B%E4%BC%9A%E6%80%8E%E6%A0%B7%EF%BC%9F%2F</url>
     <content type="text"><![CDATA[转自：https://www.jianshu.com/p/14e947dab4f9用assign修饰object类型会怎样？在我们的编码过程中已经养成了使用assign修复基本数据类型的良好习惯，我们不会去使用assign修饰对象类型属性，但是如果用assign去修复对象类型会怎样呢，你可能会有以下猜测： 1.编译会报错；2.编译不报错，运行正常；3.编译不报错，运行不正常； 开始实验 首先定义一个简单的object类型，重写dealloc方便查看对象的释放 1234567891011121314151617181920@interface TestObject : NSObject@property (nonatomic, assign) NSInteger age;@end@implementation TestObject- (void)dealloc &#123;NSLog(@&quot;%s&quot;, __FUNCTION__);&#125;@end@interface BasicViewController : BaseViewController@property (nonatomic ,assign) TestObject *property1;@end 测试一 1234- (void)test &#123;self.property1 = [TestObject new];self.property1.age = 1;&#125; 测试二 12345- (void)test &#123;TestObject *obj = [TestObject new];self.property1 = obj;self.property1.age = 1;&#125; 实验结果和分析 测试一 结果：测试一会在self.property1 = [TestObject new];这一行报出警告，单步调试后发现TestObject对象会在创建完以后被释放，所以下面self.property1.age = 1属性赋值将直接引发crash：EXC_BAD_ACCESS，这就是是所谓的野指针。 分析：因为TestObject new对象创建出来没有任何强指针指向它，所以创建完以后立即会被释放了，这时候self.property1指针指向的地方已经不可用，所以就成了野指针。 测试二 结果：编译正常没有警告，运行正常也没有报错，但是在test方法调用之后如果你再去调用属性property1同样会引发EXC_BAD_ACCESS。 分析：因为obj是test方法内的临时变量，ARC模式下编译器会在test方法的末尾调用obj release，所以一旦test方法执行完毕以后，该临时变量就会被释放，此时self.property1将变为野指针。由于这种情况下在编译阶段我们的代码都不会有任何的警告，而运行时该属性变为野指针之后，我们在任何地方调用就会引发野指针崩溃，这是很危险的。在快速编码的时候，很有可能由于我们的复制粘贴属性的定义而把object类型属性用assign修饰，因为曾经就遇到过同事留下的这种坑，从逻辑上找根本找不错错误，仔细检视代码才发现了这个低级错误]]></content>
