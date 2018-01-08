@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="NSString,TaggedPoint," />
+  <meta name="keywords" content="Objective-C,autoreleasepool," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="1.问题在学习iOS中的NSString时，看到了掘金上的一篇文章 一个毫无道理的iOS问题1234567891011121314151617181920212223242526272829303132@interface ViewController ()@property (nonatomic, strong) NSString *string1;@property (nonatomic, a">
-<meta name="keywords" content="NSString,TaggedPoint">
+<meta name="description" content="2018-01-08 立个flag , 今天看完autoreleasepool的相关知识。">
+<meta name="keywords" content="Objective-C,autoreleasepool">
 <meta property="og:type" content="article">
-<meta property="og:title" content="NSString与TaggedPoint技术">
-<meta property="og:url" content="http://yoursite.com/2017/12/26/20171226-NSString与TaggedPoint技术/index.html">
+<meta property="og:title" content="autoreleasepool">
+<meta property="og:url" content="http://yoursite.com/2018/01/08/20180108-autoreleasepool/index.html">
 <meta property="og:site_name" content="baoliang个人博客">
-<meta property="og:description" content="1.问题在学习iOS中的NSString时，看到了掘金上的一篇文章 一个毫无道理的iOS问题1234567891011121314151617181920212223242526272829303132@interface ViewController ()@property (nonatomic, strong) NSString *string1;@property (nonatomic, a">
+<meta property="og:description" content="2018-01-08 立个flag , 今天看完autoreleasepool的相关知识。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-12-29T06:58:13.028Z">
+<meta property="og:updated_time" content="2018-01-08T08:13:13.588Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="NSString与TaggedPoint技术">
-<meta name="twitter:description" content="1.问题在学习iOS中的NSString时，看到了掘金上的一篇文章 一个毫无道理的iOS问题1234567891011121314151617181920212223242526272829303132@interface ViewController ()@property (nonatomic, strong) NSString *string1;@property (nonatomic, a">
+<meta name="twitter:title" content="autoreleasepool">
+<meta name="twitter:description" content="2018-01-08 立个flag , 今天看完autoreleasepool的相关知识。">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/12/26/20171226-NSString与TaggedPoint技术/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/01/08/20180108-autoreleasepool/"/>
 
 
 
 
 
-  <title>NSString与TaggedPoint技术 | baoliang个人博客</title>
+  <title>autoreleasepool | baoliang个人博客</title>
   
 
 
@@ -297,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/26/20171226-NSString与TaggedPoint技术/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/08/20180108-autoreleasepool/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="baoliang">
@@ -314,7 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">NSString与TaggedPoint技术</h1>
+          <h1 class="post-title" itemprop="name headline">autoreleasepool</h1>
         
 
         <div class="post-meta">
@@ -326,8 +326,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-26T16:49:27+08:00">
-                2017-12-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-08T16:08:54+08:00">
+                2018-01-08
               </time>
             
 
@@ -391,17 +391,7 @@
       
 
       
-        <h1 id="1-问题"><a href="#1-问题" class="headerlink" title="1.问题"></a>1.问题</h1><p>在学习iOS中的NSString时，看到了掘金上的一篇文章 <a href="https://juejin.im/post/5a38921b6fb9a04522079fa3" target="_blank" rel="noopener">一个毫无道理的iOS问题</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">@interface ViewController ()</span><br><span class="line"></span><br><span class="line">@property (nonatomic, strong) NSString *string1;</span><br><span class="line">@property (nonatomic, assign) NSString *string2;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation ViewController</span><br><span class="line"></span><br><span class="line">- (void)viewDidLoad &#123;</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line"></span><br><span class="line">    NSLog(@&quot;1.-------&quot;);</span><br><span class="line">    self.string1 = [[NSString alloc] initWithUTF8String:&quot;string1&quot;];</span><br><span class="line">    self.string2 = self.string1;</span><br><span class="line">    self.string1 = nil;</span><br><span class="line">    NSLog(@&quot;string2 = %@&quot;,self.string2);</span><br><span class="line"></span><br><span class="line">    NSLog(@&quot;2.-------&quot;);</span><br><span class="line">    self.string1 = [[NSString alloc] initWithUTF8String:&quot;string1234&quot;];</span><br><span class="line">    self.string2 = self.string1;</span><br><span class="line">    self.string1 = nil;</span><br><span class="line">    NSLog(@&quot;string2 = %@&quot;,self.string2);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)didReceiveMemoryWarning &#123;</span><br><span class="line">    [super didReceiveMemoryWarning];</span><br><span class="line">    // Dispose of any resources that can be recreated.</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure></p>
-<p>提问：第16行和第22行的执行结果分别是什么？<br>测试后发现这段代码的问题是这样的:<br>1.第16行执行后并不会崩溃，第22行执行后会崩溃<br>2.只有字符串的内容长度超过10字节才会奔溃崩溃</p>
-<h1 id="2-解释"><a href="#2-解释" class="headerlink" title="2.解释"></a>2.解释</h1><p>我们修改代码查看两种情况下string1和string2的指针地址已经指针所存储的数据。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">- (void)viewDidLoad &#123;</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line"></span><br><span class="line">    NSLog(@&quot;1.-------&quot;);</span><br><span class="line">    self.string1 = [[NSString alloc] initWithUTF8String:&quot;SSS&quot;];</span><br><span class="line">    self.string2 = self.string1;</span><br><span class="line">    NSLog(@&quot;string1 = %p %p %@ %@&quot;,_string1,&amp;_string1,_string1,[_string1 class]);</span><br><span class="line">    NSLog(@&quot;string2 = %p %p %@ %@&quot;,_string2,&amp;_string2,_string2,[_string2 class]);</span><br><span class="line">    self.string1 = nil;</span><br><span class="line">    NSLog(@&quot;string1 = %p %p %@ %@&quot;,_string1,&amp;_string1,_string1,[_string1 class]);</span><br><span class="line">    NSLog(@&quot;string2 = %p %p %@ %@&quot;,_string2,&amp;_string2,_string2,[_string2 class]);</span><br><span class="line">    NSLog(@&quot;string2 = %@&quot;,self.string2);</span><br><span class="line"></span><br><span class="line">    NSLog(@&quot;\n\n&quot;);</span><br><span class="line">    NSLog(@&quot;2.-------&quot;);</span><br><span class="line">    self.string1 = [[NSString alloc] initWithUTF8String:&quot;string1234&quot;];</span><br><span class="line">    self.string2 = self.string1;</span><br><span class="line">    NSLog(@&quot;string1 = %p %p %@ %@&quot;,_string1,&amp;_string1,_string1,[_string1 class]);</span><br><span class="line">    NSLog(@&quot;string2 = %p %p %@ %@&quot;,_string2,&amp;_string2,_string2,[_string2 class]);</span><br><span class="line">    self.string1 = nil;</span><br><span class="line">    NSLog(@&quot;string1 = %p %p %@ %@&quot;,_string1,&amp;_string1,_string1,[_string1 class]);</span><br><span class="line">    NSLog(@&quot;string2 = %p %p %@ %@&quot;,_string2,&amp;_string2,_string2,[_string2 class]);</span><br><span class="line">    NSLog(@&quot;string2 = %@&quot;,self.string2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>运行时第22行出现异常，我们先看一下第一种情况的打印信息。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1.-------</span><br><span class="line">string1 = 0xa000000005353533 0x15dd39540 SSS NSTaggedPointerString</span><br><span class="line">string2 = 0xa000000005353533 0x15dd39548 SSS NSTaggedPointerString</span><br><span class="line">string1 = 0x0 0x15dd39540 (null) (null)</span><br><span class="line">string2 = 0xa000000005353533 0x15dd39548 SSS NSTaggedPointerString</span><br><span class="line">string2 = SSS</span><br></pre></td></tr></table></figure>
-<p>可以看出0x15dd39540和0x15dd39548是两个堆指针，指针存储的数据是0xa000000005353533，可以看出0xa000000005353533不是一个有效地址，这是因为iOS使用了TaggedPoint技术，此时“SSS”这个字符串并不是存储在堆上，而是存储在self.string这个指针里面，self.string2=self.string1，完全就是一个赋值操作，不存在指向堆内存的问题，所以不会出现异常。关于TaggedPoint的详细介绍，给大家推荐一篇博客：<a href="http://www.infoq.com/cn/articles/deep-understanding-of-tagged-pointer/" target="_blank" rel="noopener">深入理解Tagged Pointer</a></p>
-<p>接下来我们看一下第二种情况的打印信息。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">2.-------</span><br><span class="line">string1 = 0x15de0f460 0x15dd39540 string1234 __NSCFString</span><br><span class="line">string2 = 0x15de0f460 0x15dd39548 string1234 __NSCFString</span><br><span class="line">string1 = 0x0 0x15dd39540 (null) (null)</span><br></pre></td></tr></table></figure>
-<p>从运行结果可以看出，0x15dd39540和0x15dd39548是两个堆指针，里面存的数据都是0x15de0f460，也是一个有效的堆地址，在self.string1=nil之后，0x15dd39540指向的内存区0x15de0f460已经被释放，再用self.string2来访问，0x15dd39548所执向的0x15de0f460已经不存在了，是一个野指针了，所以会野指针crash。</p>
-<h1 id="3-参考博客"><a href="#3-参考博客" class="headerlink" title="3.参考博客"></a>3.参考博客</h1><p><a href="http://www.infoq.com/cn/articles/deep-understanding-of-tagged-pointer/" target="_blank" rel="noopener">http://www.infoq.com/cn/articles/deep-understanding-of-tagged-pointer/</a></p>
+        <p>2018-01-08 立个flag , 今天看完autoreleasepool的相关知识。</p>
 
       
     </div>
@@ -419,9 +409,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/NSString/" rel="tag"># NSString</a>
+            <a href="/tags/Objective-C/" rel="tag"># Objective-C</a>
           
-            <a href="/tags/TaggedPoint/" rel="tag"># TaggedPoint</a>
+            <a href="/tags/autoreleasepool/" rel="tag"># autoreleasepool</a>
           
         </div>
       
@@ -434,8 +424,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/26/20171226-Block引用计数问题/" rel="next" title="Block引用计数问题">
-                <i class="fa fa-chevron-left"></i> Block引用计数问题
+              <a href="/2018/01/07/20180107-内存管理方式/" rel="next" title="内存管理方式">
+                <i class="fa fa-chevron-left"></i> 内存管理方式
               </a>
             
           </div>
@@ -443,10 +433,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/12/27/20171227-iOS动画之CABasicAnimation/" rel="prev" title="iOS动画之CABasicAnimation">
-                iOS动画之CABasicAnimation <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -498,17 +484,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -584,22 +561,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-问题"><span class="nav-number">1.</span> <span class="nav-text">1.问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-解释"><span class="nav-number">2.</span> <span class="nav-text">2.解释</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-参考博客"><span class="nav-number">3.</span> <span class="nav-text">3.参考博客</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
