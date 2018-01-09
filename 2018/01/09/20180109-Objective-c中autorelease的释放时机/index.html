@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="转自：https://www.cnblogs.com/goodyboy6/p/4462968.html Objective-c中autorelease的释放时机 如果你使用过MRR，autorelease这个关键字应该是太熟悉了，每次在我们生成一个新的对象返回时，都需要向这个对象发送autorelease消息，目的是为了延时释放创建的对象。那到底是在什么时候，这个对象会被释放呢？有什么方法可以更快">
+<meta name="description" content="转自：https://www.cnblogs.com/goodyboy6/p/4462968.html Objective-c中autorelease的释放时机 如果你使用过MRC，autorelease这个关键字应该是太熟悉了，每次在我们生成一个新的对象返回时，都需要向这个对象发送autorelease消息，目的是为了延时释放创建的对象。那到底是在什么时候，这个对象会被释放呢？有什么方法可以更快">
 <meta name="keywords" content="Objective-C,autorelease">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Objective-C中autorelease的释放时机">
 <meta property="og:url" content="http://yoursite.com/2018/01/09/20180109-Objective-c中autorelease的释放时机/index.html">
 <meta property="og:site_name" content="baoliang个人博客">
-<meta property="og:description" content="转自：https://www.cnblogs.com/goodyboy6/p/4462968.html Objective-c中autorelease的释放时机 如果你使用过MRR，autorelease这个关键字应该是太熟悉了，每次在我们生成一个新的对象返回时，都需要向这个对象发送autorelease消息，目的是为了延时释放创建的对象。那到底是在什么时候，这个对象会被释放呢？有什么方法可以更快">
+<meta property="og:description" content="转自：https://www.cnblogs.com/goodyboy6/p/4462968.html Objective-c中autorelease的释放时机 如果你使用过MRC，autorelease这个关键字应该是太熟悉了，每次在我们生成一个新的对象返回时，都需要向这个对象发送autorelease消息，目的是为了延时释放创建的对象。那到底是在什么时候，这个对象会被释放呢？有什么方法可以更快">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-01-09T09:19:30.732Z">
+<meta property="og:updated_time" content="2018-01-09T12:32:03.538Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Objective-C中autorelease的释放时机">
-<meta name="twitter:description" content="转自：https://www.cnblogs.com/goodyboy6/p/4462968.html Objective-c中autorelease的释放时机 如果你使用过MRR，autorelease这个关键字应该是太熟悉了，每次在我们生成一个新的对象返回时，都需要向这个对象发送autorelease消息，目的是为了延时释放创建的对象。那到底是在什么时候，这个对象会被释放呢？有什么方法可以更快">
+<meta name="twitter:description" content="转自：https://www.cnblogs.com/goodyboy6/p/4462968.html Objective-c中autorelease的释放时机 如果你使用过MRC，autorelease这个关键字应该是太熟悉了，每次在我们生成一个新的对象返回时，都需要向这个对象发送autorelease消息，目的是为了延时释放创建的对象。那到底是在什么时候，这个对象会被释放呢？有什么方法可以更快">
 
 
 
@@ -393,7 +393,7 @@
       
         <p>转自：<a href="https://www.cnblogs.com/goodyboy6/p/4462968.html" target="_blank" rel="noopener">https://www.cnblogs.com/goodyboy6/p/4462968.html</a></p>
 <p>Objective-c中autorelease的释放时机</p>
-<p>如果你使用过MRR，autorelease这个关键字应该是太熟悉了，每次在我们生成一个新的对象返回时，都需要向这个对象发送autorelease消息，目的是为了延时释放创建的对象。那到底是在什么时候，这个对象会被释放呢？有什么方法可以更快的释放一个autorelease对象呢？</p>
+<p>如果你使用过MRC，autorelease这个关键字应该是太熟悉了，每次在我们生成一个新的对象返回时，都需要向这个对象发送autorelease消息，目的是为了延时释放创建的对象。那到底是在什么时候，这个对象会被释放呢？有什么方法可以更快的释放一个autorelease对象呢？</p>
 <p>咱们先来看一个现象：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">@property (weak, nonatomic) NSString *weakString;</span><br><span class="line"></span><br><span class="line">- (void)viewDidLoad &#123;</span><br><span class="line">[super viewDidLoad];</span><br><span class="line">// Do any additional setup after loading the view.</span><br><span class="line"></span><br><span class="line">NSString *hello = [[NSString alloc] initWithCString:&quot;it will be released at the end of current runloop&quot; encoding:NSUTF8StringEncoding];</span><br><span class="line"></span><br><span class="line">self.weakString = hello;</span><br><span class="line">NSLog(@&quot;%@ - %@&quot;, self.weakString, NSStringFromSelector(_cmd));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)viewWillAppear:(BOOL)animated</span><br><span class="line">&#123;</span><br><span class="line">[super viewWillAppear:animated];</span><br><span class="line">NSLog(@&quot;%@ - %@&quot;, self.weakString, NSStringFromSelector(_cmd));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)viewDidAppear:(BOOL)animated</span><br><span class="line">&#123;</span><br><span class="line">[super viewDidAppear:animated];</span><br><span class="line">NSLog(@&quot;%@ - %@&quot;, self.weakString, NSStringFromSelector(_cmd));</span><br><span class="line"></span><br><span class="line">dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">NSLog(@&quot;-2--%@ - %@&quot;, self.weakString, NSStringFromSelector(_cmd));</span><br><span class="line">&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>我们创建了一个viewDidLoad方法中创建了一个weak指针指向一个字符串，当代码执行到viewWillAppear:和viewDidAppear:时，我们依然可以打印出weak指针指向的字符串，当在viewDidAppear:中在下一个runloop中执行打印操作时，weak指针就指向nil了，why ？</strong></p>
