@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[NSString stringwithFormat方式创建的NSString的引用计数问题]]></title>
     <url>%2F2018%2F01%2F09%2F20180109-NSString-stringwithFormat%E6%96%B9%E5%BC%8F%E5%88%9B%E5%BB%BA%E7%9A%84NSString%E7%9A%84%E5%BC%95%E7%94%A8%E8%AE%A1%E6%95%B0%E9%97%AE%E9%A2%98%2F</url>
-    <content type="text"><![CDATA[123NSString *string = [[NSString alloc] initWithFormat:@&quot;Hello, World!&quot;];NSString *string1 = [NSString stringWithFormat:@&quot;Hello, World!&quot;];NSLog(@&quot;%tu-%tu\n\n&quot;,CFGetRetainCount((__bridge CFTypeRef)(string)) ,CFGetRetainCount((__bridge CFTypeRef)(stringAutorelease))); 这段代码的输出结果是什么呢？在ARC下运行结果为 11-2 [NSString stringWithFormat:@”Hello, World!”]和[[NSString alloc] initWithFormat:@”Hello, World!”]有什么区别？ 解释：NSString *string = [[NSString alloc] initWithFormat:@”Hello, World!”] 这个需要手动释放内存 NSString *string1 = [NSString stringWithFormat:@”Hello, World!”]; 是 autorelease的，不用需要手动释放内存 参考：http://blog.sina.com.cn/s/blog_716de00901017tnh.html]]></content>
+    <content type="text"><![CDATA[123NSString *string = [[NSString alloc] initWithFormat:@&quot;Hello, World!&quot;];NSString *string1 = [NSString stringWithFormat:@&quot;Hello, World!&quot;];NSLog(@&quot;%tu-%tu\n\n&quot;,CFGetRetainCount((__bridge CFTypeRef)(string)) ,CFGetRetainCount((__bridge CFTypeRef)(stringAutorelease))); 这段代码的输出结果是什么呢？在ARC下运行结果为 11-2 [NSString stringWithFormat:@”Hello, World!”]和[[NSString alloc] initWithFormat:@”Hello, World!”]有什么区别？ 解释：NSString *string = [[NSString alloc] initWithFormat:@”Hello, World!”] 这个需要手动释放内存 NSString *string1 = [NSString stringWithFormat:@”Hello, World!”]; 是 autorelease的，不用需要手动释放内存 参考：http://blog.sina.com.cn/s/blog_716de00901017tnh.htmlhttps://www.cnblogs.com/zhangdashao/p/4444842.html]]></content>
       <categories>
         <category>Objective-C</category>
       </categories>
@@ -142,8 +142,8 @@
       </categories>
       <tags>
         <tag>Block</tag>
-        <tag>Objective-C</tag>
         <tag>MRC</tag>
+        <tag>Objective-C</tag>
       </tags>
   </entry>
   <entry>
