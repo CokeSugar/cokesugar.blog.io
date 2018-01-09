@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="123NSString *string = [[NSString alloc] initWithFormat:@&amp;quot;Hello, World!&amp;quot;];NSString *stringAutorelease = [NSString stringWithFormat:@&amp;quot;Hello, World! Autorelease&amp;quot;]; // 创建autorelease对象N">
+<meta name="description" content="123NSString *string = [[NSString alloc] initWithFormat:@&amp;quot;Hello, World!&amp;quot;];NSString *string1 = [NSString stringWithFormat:@&amp;quot;Hello, World!&amp;quot;];NSLog(@&amp;quot;%tu-%tu\n\n&amp;quot;,CFGetRetain">
 <meta name="keywords" content="NSString,Objective-C">
 <meta property="og:type" content="article">
 <meta property="og:title" content="NSString stringwithFormat方式创建的NSString的引用计数问题">
 <meta property="og:url" content="http://yoursite.com/2018/01/09/20180109-NSString-stringwithFormat方式创建的NSString的引用计数问题/index.html">
 <meta property="og:site_name" content="baoliang个人博客">
-<meta property="og:description" content="123NSString *string = [[NSString alloc] initWithFormat:@&amp;quot;Hello, World!&amp;quot;];NSString *stringAutorelease = [NSString stringWithFormat:@&amp;quot;Hello, World! Autorelease&amp;quot;]; // 创建autorelease对象N">
+<meta property="og:description" content="123NSString *string = [[NSString alloc] initWithFormat:@&amp;quot;Hello, World!&amp;quot;];NSString *string1 = [NSString stringWithFormat:@&amp;quot;Hello, World!&amp;quot;];NSLog(@&amp;quot;%tu-%tu\n\n&amp;quot;,CFGetRetain">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-01-09T02:49:26.533Z">
+<meta property="og:updated_time" content="2018-01-09T03:05:13.021Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NSString stringwithFormat方式创建的NSString的引用计数问题">
-<meta name="twitter:description" content="123NSString *string = [[NSString alloc] initWithFormat:@&amp;quot;Hello, World!&amp;quot;];NSString *stringAutorelease = [NSString stringWithFormat:@&amp;quot;Hello, World! Autorelease&amp;quot;]; // 创建autorelease对象N">
+<meta name="twitter:description" content="123NSString *string = [[NSString alloc] initWithFormat:@&amp;quot;Hello, World!&amp;quot;];NSString *string1 = [NSString stringWithFormat:@&amp;quot;Hello, World!&amp;quot;];NSLog(@&amp;quot;%tu-%tu\n\n&amp;quot;,CFGetRetain">
 
 
 
@@ -391,10 +391,13 @@
       
 
       
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">NSString *string = [[NSString alloc] initWithFormat:@&quot;Hello, World!&quot;];</span><br><span class="line">NSString *stringAutorelease = [NSString stringWithFormat:@&quot;Hello, World! Autorelease&quot;]; // 创建autorelease对象</span><br><span class="line">NSLog(@&quot;%tu-%tu\n\n&quot;,CFGetRetainCount((__bridge CFTypeRef)(string)) ,CFGetRetainCount((__bridge CFTypeRef)(stringAutorelease)));</span><br></pre></td></tr></table></figure>
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">NSString *string = [[NSString alloc] initWithFormat:@&quot;Hello, World!&quot;];</span><br><span class="line">NSString *string1 = [NSString stringWithFormat:@&quot;Hello, World!&quot;];</span><br><span class="line">NSLog(@&quot;%tu-%tu\n\n&quot;,CFGetRetainCount((__bridge CFTypeRef)(string)) ,CFGetRetainCount((__bridge CFTypeRef)(stringAutorelease)));</span><br></pre></td></tr></table></figure>
 <p>这段代码的输出结果是什么呢？<br>在ARC下运行结果为</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1-2</span><br></pre></td></tr></table></figure>
-<p>[NSString stringWithFormat:@”Hello, World! Autorelease”]和[[NSString alloc] initWithFormat:@”Hello, World!”]这两种方式有什么区别？</p>
+<p>[NSString stringWithFormat:@”Hello, World!”]和[[NSString alloc] initWithFormat:@”Hello, World!”]有什么区别？</p>
+<p>解释：<br>NSString *string = [[NSString alloc] initWithFormat:@”Hello, World!”] 这个需要手动释放内存</p>
+<p>NSString *string1 = [NSString stringWithFormat:@”Hello, World!”]; 是 autorelease的，不用需要手动释放内存</p>
+<p>参考：<br><a href="http://blog.sina.com.cn/s/blog_716de00901017tnh.html" target="_blank" rel="noopener">http://blog.sina.com.cn/s/blog_716de00901017tnh.html</a></p>
 
       
     </div>
