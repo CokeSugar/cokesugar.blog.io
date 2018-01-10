@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Objective-C中类的load和initialize方法]]></title>
+    <url>%2F2018%2F01%2F10%2F20180110-Objective-C%E4%B8%AD%E7%B1%BB%E7%9A%84load%E5%92%8Cinitialize%E6%96%B9%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[Objective-C中类的load和initialize方法load方法 原型如下 1+ (void)load load函数调用特点如下： 对于加入运行期系统中的每个类（class）及分类（category）来说，都会调用此方法，且只会调用一次。如果分类和其所属的类都调用了load方法，则先调用类里面的，再调用分类里的。 load方法并不像普通方法那样，它并不遵从继承规则。即如果某个类本身没有load方法，那么不管其超类是否实现load方法，系统都不会调用。 initialize方法 其原型如下： 1+ (void)initialize initialize函数的特点是： 对每个类来说，该方法会在程序首次使用该类前调用，且只调用一次。它是由运行期系统来调用的，绝不应该通过代码直接调用。 initialize方法与其他消息一样，如果某个类未实现它，而其超类实现了，就会运行超 load和initialize的区别 load和initialize之间的区别如下： initialize是”惰性调用的”，即只有当用到了相关的类时，才会调用。如果某个类一直都没有使用，则其initialize方法就一直不会运行。这也就是说，应用程序无须把每个类的initialize都执行一遍。这就与load不同，对于load来说，应用程序必须阻塞并等待所有类的load都执行完，才能继续。 initialize在运行期系统执行该方法时，是处于正常状态，因此从运行期系统完整度上来讲，此时可以安全使用并调用任意类中的任意方法。而且，运行期系统也能保证initialize方法一定会在“线程安全的环境（thread-safe environment）”中执行，这就是说，只有执行initialize的那个线程可以操作类或者类实例。其他线程都要先阻塞，等着initialize执行完。load方法的问题在于，执行该方法时，运行期系统处于“脆弱状态（fragile state）”。在执行子类的load方法之前，必定会执行所有超类的load方法。 https://www.cnblogs.com/ider/archive/2012/09/29/objective_c_load_vs_initialize.html http://blog.csdn.net/u014084081/article/details/48265453]]></content>
+      <categories>
+        <category>Objective-C</category>
+      </categories>
+      <tags>
+        <tag>Objective-C</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Objective-C中autorelease的释放时机]]></title>
-    <url>%2F2018%2F01%2F09%2F20180109-Objective-c%E4%B8%ADautorelease%E7%9A%84%E9%87%8A%E6%94%BE%E6%97%B6%E6%9C%BA%2F</url>
+    <url>%2F2018%2F01%2F09%2F20180109-Objective-C%E4%B8%ADautorelease%E7%9A%84%E9%87%8A%E6%94%BE%E6%97%B6%E6%9C%BA%2F</url>
     <content type="text"><![CDATA[转自：https://www.cnblogs.com/goodyboy6/p/4462968.html Objective-c中autorelease的释放时机 如果你使用过MRC，autorelease这个关键字应该是太熟悉了，每次在我们生成一个新的对象返回时，都需要向这个对象发送autorelease消息，目的是为了延时释放创建的对象。那到底是在什么时候，这个对象会被释放呢？有什么方法可以更快的释放一个autorelease对象呢？ 咱们先来看一个现象： 123456789101112131415161718192021222324252627@property (weak, nonatomic) NSString *weakString;- (void)viewDidLoad &#123;[super viewDidLoad];// Do any additional setup after loading the view.NSString *hello = [[NSString alloc] initWithCString:&quot;it will be released at the end of current runloop&quot; encoding:NSUTF8StringEncoding];self.weakString = hello;NSLog(@&quot;%@ - %@&quot;, self.weakString, NSStringFromSelector(_cmd));&#125;- (void)viewWillAppear:(BOOL)animated&#123;[super viewWillAppear:animated];NSLog(@&quot;%@ - %@&quot;, self.weakString, NSStringFromSelector(_cmd));&#125;- (void)viewDidAppear:(BOOL)animated&#123;[super viewDidAppear:animated];NSLog(@&quot;%@ - %@&quot;, self.weakString, NSStringFromSelector(_cmd));dispatch_async(dispatch_get_main_queue(), ^&#123;NSLog(@&quot;-2--%@ - %@&quot;, self.weakString, NSStringFromSelector(_cmd));&#125;);&#125; 我们创建了一个viewDidLoad方法中创建了一个weak指针指向一个字符串，当代码执行到viewWillAppear:和viewDidAppear:时，我们依然可以打印出weak指针指向的字符串，当在viewDidAppear:中在下一个runloop中执行打印操作时，weak指针就指向nil了，why ？ 编译器在ARC环境下可能会帮我们把这条语句self.weakString = hello改成类似这样： self.weakString = [[hello retain] autorelease];当向hello发送autorelease消息时，hello将会被加入到当前的autorelease pool中，当autorelease pool release时，它会像pool中hello发送release消息，然后hello就被真正释放了。 可是看看我们的示例代码，我们并没有autorelease pool啊，我们知道app启动时main函数里面有一个autorelease pool，难道是这个autorelease pool被释放了？ 显然不可能，那可以肯定的说，系统隐式的帮我们创建了autorelease pool。 系统怎么知道我们要为我们创建autorelease pool的呢？ ++main函数启动后系统会创建一个main runloop，每个runloop系统都会分配一个autorelease pool，它将在app退出的时候释放app所占用的内存。当用户输入设备（如点击button、键盘按下）、网络链接(socket收到数据)、定期或时间延迟事件（NSTimer），还有异步回调(NSURLConnection的异步请求)等三类（sources、timers、observers）会将这个main runloop激活并产生一个autorelease pool，当runloop进入睡眠时，释放这个autorelease pool。++ 比如我们的demo里面，是一个cell点事件触发了一个页面切换，从点击cell点击激活runloop到新页面的viewDidAppear:结束后runloop进入休眠，这中间创建的autorelease pool就是那个把weakString释放的家伙。 参考资料： 1）http://www.cnblogs.com/whyandinside/p/3489951.html 2）https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/Multithreading/RunLoopManagement/RunLoopManagement.html]]></content>
       <categories>
         <category>Objective-C</category>
@@ -20,8 +31,8 @@
         <category>Objective-C</category>
       </categories>
       <tags>
-        <tag>NSString</tag>
         <tag>Objective-C</tag>
+        <tag>NSString</tag>
       </tags>
   </entry>
   <entry>
@@ -79,8 +90,8 @@
         <category>Objective-C</category>
       </categories>
       <tags>
-        <tag>iOS</tag>
         <tag>Objective-C</tag>
+        <tag>iOS</tag>
         <tag>category</tag>
       </tags>
   </entry>
@@ -141,8 +152,8 @@
         <category>Objective-C</category>
       </categories>
       <tags>
-        <tag>iOS</tag>
         <tag>Objective-C</tag>
+        <tag>iOS</tag>
       </tags>
   </entry>
   <entry>
@@ -166,9 +177,9 @@
         <category>iOS</category>
       </categories>
       <tags>
-        <tag>CAKeyframeAnimation</tag>
         <tag>动画</tag>
         <tag>iOS</tag>
+        <tag>CAKeyframeAnimation</tag>
       </tags>
   </entry>
   <entry>
@@ -179,9 +190,9 @@
         <category>iOS</category>
       </categories>
       <tags>
+        <tag>CABasicAnimation</tag>
         <tag>动画</tag>
         <tag>iOS</tag>
-        <tag>CABasicAnimation</tag>
       </tags>
   </entry>
   <entry>
