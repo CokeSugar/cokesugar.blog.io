@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="这道题给了我们n个灯泡，第一次打开所有的灯泡，第二次每两个更改灯泡的状态，第三次每三个更改灯泡的状态，以此类推，第n次每n个更改灯泡的状态。让我们求n次后，所有亮的灯泡的个数。此题是CareerCup 6.6 Toggle Lockers 切换锁的状态。 那么我们来看这道题吧，还是先枚举个小例子来分析下，比如只有5个灯泡的情况，’X’表示亮，‘√’表示灭，如下所示： 初始状态：    X    X">
+<meta name="description" content="这道题给了我们n个灯泡，第一次打开所有的灯泡，第二次每两个更改灯泡的状态，第三次每三个更改灯泡的状态，以此类推，第n次每n个更改灯泡的状态。让我们求n次后，所有亮的灯泡的个数。 那么我们来看这道题吧，还是先枚举个小例子来分析下，比如只有5个灯泡的情况，’0’表示亮，‘1’表示灭，如下所示： 初始状态：    0    0    0    0    0 第一次：      1   1    1">
 <meta name="keywords" content="LeetCode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[LeetCode]319.Bulb Switcher 灯泡开关">
 <meta property="og:url" content="http://yoursite.com/2018/01/18/20180118-LeetCode-319-Bulb-Switcher-灯泡开关/index.html">
 <meta property="og:site_name" content="baoliang个人博客">
-<meta property="og:description" content="这道题给了我们n个灯泡，第一次打开所有的灯泡，第二次每两个更改灯泡的状态，第三次每三个更改灯泡的状态，以此类推，第n次每n个更改灯泡的状态。让我们求n次后，所有亮的灯泡的个数。此题是CareerCup 6.6 Toggle Lockers 切换锁的状态。 那么我们来看这道题吧，还是先枚举个小例子来分析下，比如只有5个灯泡的情况，’X’表示亮，‘√’表示灭，如下所示： 初始状态：    X    X">
+<meta property="og:description" content="这道题给了我们n个灯泡，第一次打开所有的灯泡，第二次每两个更改灯泡的状态，第三次每三个更改灯泡的状态，以此类推，第n次每n个更改灯泡的状态。让我们求n次后，所有亮的灯泡的个数。 那么我们来看这道题吧，还是先枚举个小例子来分析下，比如只有5个灯泡的情况，’0’表示亮，‘1’表示灭，如下所示： 初始状态：    0    0    0    0    0 第一次：      1   1    1">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-01-18T03:52:09.009Z">
+<meta property="og:updated_time" content="2018-01-18T04:04:14.792Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[LeetCode]319.Bulb Switcher 灯泡开关">
-<meta name="twitter:description" content="这道题给了我们n个灯泡，第一次打开所有的灯泡，第二次每两个更改灯泡的状态，第三次每三个更改灯泡的状态，以此类推，第n次每n个更改灯泡的状态。让我们求n次后，所有亮的灯泡的个数。此题是CareerCup 6.6 Toggle Lockers 切换锁的状态。 那么我们来看这道题吧，还是先枚举个小例子来分析下，比如只有5个灯泡的情况，’X’表示亮，‘√’表示灭，如下所示： 初始状态：    X    X">
+<meta name="twitter:description" content="这道题给了我们n个灯泡，第一次打开所有的灯泡，第二次每两个更改灯泡的状态，第三次每三个更改灯泡的状态，以此类推，第n次每n个更改灯泡的状态。让我们求n次后，所有亮的灯泡的个数。 那么我们来看这道题吧，还是先枚举个小例子来分析下，比如只有5个灯泡的情况，’0’表示亮，‘1’表示灭，如下所示： 初始状态：    0    0    0    0    0 第一次：      1   1    1">
 
 
 
@@ -402,14 +402,14 @@
       
 
       
-        <p>这道题给了我们n个灯泡，第一次打开所有的灯泡，第二次每两个更改灯泡的状态，第三次每三个更改灯泡的状态，以此类推，第n次每n个更改灯泡的状态。让我们求n次后，所有亮的灯泡的个数。此题是CareerCup 6.6 Toggle Lockers 切换锁的状态。</p>
-<p>那么我们来看这道题吧，还是先枚举个小例子来分析下，比如只有5个灯泡的情况，’X’表示亮，‘√’表示灭，如下所示：</p>
-<p>初始状态：    X    X    X    X    X</p>
-<p>第一次：      √    √    √    √    √</p>
-<p>第二次：      √     X    √    X    √</p>
-<p>第三次：      √     X    X    X    √</p>
-<p>第四次：      √     X    X    √    √</p>
-<p>第五次：      √     X    X    √    X</p>
+        <p>这道题给了我们n个灯泡，第一次打开所有的灯泡，第二次每两个更改灯泡的状态，第三次每三个更改灯泡的状态，以此类推，第n次每n个更改灯泡的状态。让我们求n次后，所有亮的灯泡的个数。</p>
+<p>那么我们来看这道题吧，还是先枚举个小例子来分析下，比如只有5个灯泡的情况，’0’表示亮，‘1’表示灭，如下所示：</p>
+<p>初始状态：    0    0    0    0    0</p>
+<p>第一次：      1   1    1    1    1</p>
+<p>第二次：      1     0    1    0    1</p>
+<p>第三次：      1     0    0    0    1</p>
+<p>第四次：      1     0    0    1    1</p>
+<p>第五次：      1     0    0    1   0</p>
 <p>那么最后我们发现五次遍历后，只有1号和4号锁是亮的，而且很巧的是它们都是平方数，是巧合吗，还是其中有什么玄机。我们仔细想想，对于第n个灯泡，只有当次数是n的因子的之后，才能改变灯泡的状态，即n能被当前次数整除，比如当n为36时，它的因数有(1,36), (2,18), (3,12), (4,9), (6,6), 可以看到前四个括号里成对出现的因数各不相同，括号中前面的数改变了灯泡状态，后面的数又变回去了，等于锁的状态没有发生变化，只有最后那个(6,6)，在次数6的时候改变了一次状态，没有对应其它的状态能将其变回去了，所以锁就一直是打开状态的。所以所有平方数都有这么一个相等的因数对，即所有平方数的灯泡都将会是打开的状态。</p>
 <p>那么问题就简化为了求1到n之间完全平方数的个数，我们可以用force brute来比较从1开始的完全平方数和n的大小，参见代码如下：</p>
 <p>解法一：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public:</span><br><span class="line">    int bulbSwitch(int n) &#123;</span><br><span class="line">        int res = 1;</span><br><span class="line">        while (res * res &lt;= n) ++res;</span><br><span class="line">        return res - 1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
