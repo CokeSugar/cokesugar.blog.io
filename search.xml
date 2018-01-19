@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[[LeetCode]55.Jump Game 跳跃游戏]]></title>
+    <url>%2F2018%2F01%2F19%2F20180119-LeetCode-55-Jump-Game-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F%2F</url>
+    <content type="text"><![CDATA[Given an array of non-negative integers, you are initially positioned at the first index of the array. Each element in the array represents your maximum jump length at that position. Determine if you are able to reach the last index. For example:A = [2,3,1,1,4], return true. A = [3,2,1,0,4], return false. 用一个变量来保存当前位置能到达的最远位置，遍历数组中的每一个数字。如果当前数字为 那么我们可以用动态规划Dynamic Programming来解，我们维护一个一位数组dp，其中dp[i]表示走道i位置时剩余的最大步数，那么递推公式为：dp[i] = max(dp[i - 1], A[i - 1]) - 1，如果当某一个时刻dp数组的值为负了，说明无法抵达当前位置，则直接返回false，最后我们判断dp数组最后一位是否为非负数即可知道是否能抵达该位置，代码如下： 1234567891011class Solution &#123; public: bool canJump(int A[], int n) &#123; vector&lt;int&gt; dp(n, 0); for (int i = 1; i &lt; n; ++i) &#123; dp[i] = max(dp[i - 1], A[i - 1]) - 1; if (dp[i] &lt; 0) return false; &#125; return dp[n - 1] &gt;= 0; &#125;&#125;;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[[LeetCode]319.Bulb Switcher 灯泡开关]]></title>
     <url>%2F2018%2F01%2F18%2F20180118-LeetCode-319-Bulb-Switcher-%E7%81%AF%E6%B3%A1%E5%BC%80%E5%85%B3%2F</url>
     <content type="text"><![CDATA[这道题给了我们n个灯泡，第一次打开所有的灯泡，第二次每两个更改灯泡的状态，第三次每三个更改灯泡的状态，以此类推，第n次每n个更改灯泡的状态。让我们求n次后，所有亮的灯泡的个数。 那么我们来看这道题吧，还是先枚举个小例子来分析下，比如只有5个灯泡的情况，’0’表示亮，‘1’表示灭，如下所示： 初始状态： 0 0 0 0 0 第一次： 1 1 1 1 1 第二次： 1 0 1 0 1 第三次： 1 0 0 0 1 第四次： 1 0 0 1 1 第五次： 1 0 0 1 0 那么最后我们发现五次遍历后，只有1号和4号锁是亮的，而且很巧的是它们都是平方数，是巧合吗，还是其中有什么玄机。我们仔细想想，对于第n个灯泡，只有当次数是n的因子的之后，才能改变灯泡的状态，即n能被当前次数整除，比如当n为36时，它的因数有(1,36), (2,18), (3,12), (4,9), (6,6), 可以看到前四个括号里成对出现的因数各不相同，括号中前面的数改变了灯泡状态，后面的数又变回去了，等于锁的状态没有发生变化，只有最后那个(6,6)，在次数6的时候改变了一次状态，没有对应其它的状态能将其变回去了，所以锁就一直是打开状态的。所以所有平方数都有这么一个相等的因数对，即所有平方数的灯泡都将会是打开的状态。 那么问题就简化为了求1到n之间完全平方数的个数，我们可以用force brute来比较从1开始的完全平方数和n的大小，参见代码如下： 解法一：12345678class Solution &#123; public: int bulbSwitch(int n) &#123; int res = 1; while (res * res &lt;= n) ++res; return res - 1; &#125;&#125;; 还有一种方法更简单，我们直接对n开方，在C++里的sqrt函数返回的是一个整型数，这个整型数的平方最接近于n，即为n包含的所有完全平方数的个数，参见代码如下： 解法二：123456class Solution &#123; public: int bulbSwitch(int n) &#123; return sqrt(n); &#125;&#125;;]]></content>
@@ -65,8 +76,8 @@
         <category>Objective-C</category>
       </categories>
       <tags>
-        <tag>NSString</tag>
         <tag>Objective-C</tag>
+        <tag>NSString</tag>
       </tags>
   </entry>
   <entry>
@@ -124,8 +135,8 @@
         <category>Objective-C</category>
       </categories>
       <tags>
-        <tag>iOS</tag>
         <tag>Objective-C</tag>
+        <tag>iOS</tag>
         <tag>category</tag>
       </tags>
   </entry>
@@ -186,8 +197,8 @@
         <category>Objective-C</category>
       </categories>
       <tags>
-        <tag>iOS</tag>
         <tag>Objective-C</tag>
+        <tag>iOS</tag>
       </tags>
   </entry>
   <entry>
@@ -211,9 +222,9 @@
         <category>iOS</category>
       </categories>
       <tags>
+        <tag>CAKeyframeAnimation</tag>
         <tag>动画</tag>
         <tag>iOS</tag>
-        <tag>CAKeyframeAnimation</tag>
       </tags>
   </entry>
   <entry>
@@ -224,9 +235,9 @@
         <category>iOS</category>
       </categories>
       <tags>
-        <tag>CABasicAnimation</tag>
         <tag>动画</tag>
         <tag>iOS</tag>
+        <tag>CABasicAnimation</tag>
       </tags>
   </entry>
   <entry>
