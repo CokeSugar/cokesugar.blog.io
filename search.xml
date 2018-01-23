@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[[LeetCode]84.Largest Rectangle in Histogram 直方图中最大的矩形]]></title>
+    <url>%2F2018%2F01%2F23%2F20180123-LeetCode-84-Largest-Rectangle-in-Histogram-%E7%9B%B4%E6%96%B9%E5%9B%BE%E4%B8%AD%E6%9C%80%E5%A4%A7%E7%9A%84%E7%9F%A9%E5%BD%A2%2F</url>
+    <content type="text"><![CDATA[Given n non-negative integers representing the histogram’s bar height where the width of each bar is 1, find the area of largest rectangle in the histogram. Above is a histogram where width of each bar is 1, given height = [2,1,5,6,2,3].The largest rectangle is shown in the shaded area, which has area = 10 unit. For example,Given height = [2,1,5,6,2,3],return 10. 对数组进行遍历：对第一个元素 2 ，找2前后比2大的数，0个。面积=21=2第二个元素 1，前后比1大的，有5个。面积 = 16 =6第三个元素 5，有1个比5大的，面积 52 =10第四个元素6，有0个比6大的，面积 = 61 =6第五个元素2，有4个比2大的，面积 = 24 =8第六个元素3，有0个比3大的，面积 = 31 =3 最大面积 10]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[[LeetCode]200.Number of Islands 岛屿的数量]]></title>
     <url>%2F2018%2F01%2F23%2F20180123-LeetCode-200-Number-of-Islands-%E5%B2%9B%E5%B1%BF%E7%9A%84%E6%95%B0%E9%87%8F%2F</url>
     <content type="text"><![CDATA[Given a 2d grid map of ‘1’s (land) and ‘0’s (water), count the number of islands. An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water. Example 1: 11110110101100000000Answer: 1 Example 2: 11000110000010000011Answer: 3 Credits:Special thanks to @mithmatt for adding this problem and creating all test cases. 这道求岛屿数量的题的本质是求矩阵中连续区域的个数，很容易想到需要用深度优先搜索DFS来解，我们需要建立一个visited数组用来记录某个位置是否被访问过，对于一个为‘1’且未被访问过的位置，我们递归进入其上下左右位置上为‘1’的数，将其visited对应值赋为true，继续进入其所有相连的邻位置，这样可以将这个连通区域所有的数找出来，并将其对应的visited中的值赋true，找完次区域后，我们将结果res自增1，然后我们在继续找下一个为‘1’且未被访问过的位置，以此类推直至遍历完整个原数组即可得到最终结果，代码如下：]]></content>
@@ -220,9 +231,9 @@
         <category>Objective-C</category>
       </categories>
       <tags>
+        <tag>MRC</tag>
         <tag>Block</tag>
         <tag>Objective-C</tag>
-        <tag>MRC</tag>
       </tags>
   </entry>
   <entry>
@@ -233,9 +244,9 @@
         <category>iOS</category>
       </categories>
       <tags>
-        <tag>CAKeyframeAnimation</tag>
         <tag>动画</tag>
         <tag>iOS</tag>
+        <tag>CAKeyframeAnimation</tag>
       </tags>
   </entry>
   <entry>
@@ -246,9 +257,9 @@
         <category>iOS</category>
       </categories>
       <tags>
+        <tag>CABasicAnimation</tag>
         <tag>动画</tag>
         <tag>iOS</tag>
-        <tag>CABasicAnimation</tag>
       </tags>
   </entry>
   <entry>
