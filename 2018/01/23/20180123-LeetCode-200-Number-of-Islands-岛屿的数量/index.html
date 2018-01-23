@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Objective-C,autoreleasepool," />
+  <meta name="keywords" content="LeetCode," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="2018-01-08 立个flag , 今天看完autoreleasepool的相关知识。">
-<meta name="keywords" content="Objective-C,autoreleasepool">
+<meta name="description" content="Given a 2d grid map of ‘1’s (land) and ‘0’s (water), count the number of islands. An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume">
+<meta name="keywords" content="LeetCode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="autoreleasepool">
-<meta property="og:url" content="http://yoursite.com/2018/01/08/20180108-autoreleasepool/index.html">
+<meta property="og:title" content="[LeetCode]200.Number of Islands 岛屿的数量">
+<meta property="og:url" content="http://yoursite.com/2018/01/23/20180123-LeetCode-200-Number-of-Islands-岛屿的数量/index.html">
 <meta property="og:site_name" content="baoliang个人博客">
-<meta property="og:description" content="2018-01-08 立个flag , 今天看完autoreleasepool的相关知识。">
+<meta property="og:description" content="Given a 2d grid map of ‘1’s (land) and ‘0’s (water), count the number of islands. An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-01-08T08:13:13.588Z">
+<meta property="og:updated_time" content="2018-01-23T10:15:50.481Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="autoreleasepool">
-<meta name="twitter:description" content="2018-01-08 立个flag , 今天看完autoreleasepool的相关知识。">
+<meta name="twitter:title" content="[LeetCode]200.Number of Islands 岛屿的数量">
+<meta name="twitter:description" content="Given a 2d grid map of ‘1’s (land) and ‘0’s (water), count the number of islands. An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/01/08/20180108-autoreleasepool/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/01/23/20180123-LeetCode-200-Number-of-Islands-岛屿的数量/"/>
 
 
 
 
 
-  <title>autoreleasepool | baoliang个人博客</title>
+  <title>[LeetCode]200.Number of Islands 岛屿的数量 | baoliang个人博客</title>
   
 
 
@@ -297,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/08/20180108-autoreleasepool/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/23/20180123-LeetCode-200-Number-of-Islands-岛屿的数量/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="baoliang">
@@ -314,7 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">autoreleasepool</h1>
+          <h1 class="post-title" itemprop="name headline">[LeetCode]200.Number of Islands 岛屿的数量</h1>
         
 
         <div class="post-meta">
@@ -326,8 +326,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-08T16:08:54+08:00">
-                2018-01-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-23T18:14:33+08:00">
+                2018-01-23
               </time>
             
 
@@ -349,8 +349,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Objective-C/" itemprop="url" rel="index">
-                    <span itemprop="name">Objective-C</span>
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
                   </a>
                 </span>
 
@@ -367,9 +367,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/01/08/20180108-autoreleasepool/#comments" itemprop="discussionUrl">
+                <a href="/2018/01/23/20180123-LeetCode-200-Number-of-Islands-岛屿的数量/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/01/08/20180108-autoreleasepool/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/01/23/20180123-LeetCode-200-Number-of-Islands-岛屿的数量/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -402,7 +402,13 @@
       
 
       
-        <p>2018-01-08 立个flag , 今天看完autoreleasepool的相关知识。</p>
+        <p>Given a 2d grid map of ‘1’s (land) and ‘0’s (water), count the number of islands. An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.</p>
+<p>Example 1:</p>
+<p>11110<br>11010<br>11000<br>00000<br>Answer: 1</p>
+<p>Example 2:</p>
+<p>11000<br>11000<br>00100<br>00011<br>Answer: 3</p>
+<p>Credits:<br>Special thanks to @mithmatt for adding this problem and creating all test cases.</p>
+<p>这道求岛屿数量的题的本质是求矩阵中连续区域的个数，很容易想到需要用深度优先搜索DFS来解，我们需要建立一个visited数组用来记录某个位置是否被访问过，对于一个为‘1’且未被访问过的位置，我们递归进入其上下左右位置上为‘1’的数，将其visited对应值赋为true，继续进入其所有相连的邻位置，这样可以将这个连通区域所有的数找出来，并将其对应的visited中的值赋true，找完次区域后，我们将结果res自增1，然后我们在继续找下一个为‘1’且未被访问过的位置，以此类推直至遍历完整个原数组即可得到最终结果，代码如下：</p>
 
       
     </div>
@@ -420,9 +426,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Objective-C/" rel="tag"># Objective-C</a>
-          
-            <a href="/tags/autoreleasepool/" rel="tag"># autoreleasepool</a>
+            <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
           
         </div>
       
@@ -435,8 +439,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/07/20180107-内存管理方式/" rel="next" title="内存管理方式">
-                <i class="fa fa-chevron-left"></i> 内存管理方式
+              <a href="/2018/01/19/20180119-LeetCode-55-Jump-Game-跳跃游戏/" rel="next" title="[LeetCode]55.Jump Game 跳跃游戏">
+                <i class="fa fa-chevron-left"></i> [LeetCode]55.Jump Game 跳跃游戏
               </a>
             
           </div>
@@ -444,10 +448,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/01/09/20180109-NSString-stringwithFormat方式创建的NSString的引用计数问题/" rel="prev" title="NSString stringwithFormat方式创建的NSString的引用计数问题">
-                NSString stringwithFormat方式创建的NSString的引用计数问题 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -769,9 +769,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2018/01/08/20180108-autoreleasepool/';
-          this.page.identifier = '2018/01/08/20180108-autoreleasepool/';
-          this.page.title = 'autoreleasepool';
+          this.page.url = 'http://yoursite.com/2018/01/23/20180123-LeetCode-200-Number-of-Islands-岛屿的数量/';
+          this.page.identifier = '2018/01/23/20180123-LeetCode-200-Number-of-Islands-岛屿的数量/';
+          this.page.title = '[LeetCode]200.Number of Islands 岛屿的数量';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://baoliang.disqus.com/embed.js';
