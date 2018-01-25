@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[20180125-[LeetCode]221.Maximal Square 最大正方形]]></title>
+    <url>%2F2018%2F01%2F25%2F20180125-LeetCode-221-Maximal-Square-%E6%9C%80%E5%A4%A7%E6%AD%A3%E6%96%B9%E5%BD%A2%2F</url>
+    <content type="text"><![CDATA[Given a 2D binary matrix filled with 0’s and 1’s, find the largest square containing all 1’s and return its area. For example, given the following matrix: 1 0 1 0 01 0 1 1 11 1 1 1 11 0 0 1 0Return 4. dp[i][j] = min(dp[i - 1][j - 1], min(dp[i][j - 1], dp[i - 1][j])) + 1;]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[LeetCode]76.Minimum Window Substring 最小窗口子串]]></title>
+    <url>%2F2018%2F01%2F25%2F20180124-LeetCode-76-Minimum-Window-Substring-%E6%9C%80%E5%B0%8F%E7%AA%97%E5%8F%A3%E5%AD%90%E4%B8%B2%2F</url>
+    <content type="text"><![CDATA[Given a string S and a string T, find the minimum window in S which will contain all the characters in T in complexity O(n). For example,S = “ADOBECODEBANC”T = “ABC” Minimum window is “BANC”. Note:If there is no such window in S that covers all characters in T, return the emtpy string “”. If there are multiple such windows, you are guaranteed that there will always be only one unique minimum window in S. 定义一个数组用于存放T中各个字符出现的位置。对S字符串进行遍历。ADOBECODEBANC第一个字符 A 记录位置 0第二个字符 D。。。第四个字符 B 记录位置 3。。。。第六个字符 C 记录位置 5此时数组大小为T.size() 长度为 6 第十个字符 B 记录位置 9第十一个字符 A 记录位置 10第十三个字符 C记录位置 12 此时数组大小为T.size() 长度为 4]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[LeetCode]85.Maximal Rectangle 最大矩形]]></title>
+    <url>%2F2018%2F01%2F25%2F20180124-LeetCode-85-Maximal-Rectangle-%E6%9C%80%E5%A4%A7%E7%9F%A9%E5%BD%A2%2F</url>
+    <content type="text"><![CDATA[Given a 2D binary matrix filled with 0’s and 1’s, find the largest rectangle containing all ones and return its area. 我们举个例子来说明，比如给定矩阵为： [[1, 1, 0, 0, 1],[0, 1, 0, 0, 1],[0, 0, 1, 1, 1],[0, 0, 1, 1, 1],[0, 0, 0, 0, 1]]解： 1 1 0 0 10 2 0 0 2 max = 20 0 1 1 3 max = 3(13)0 0 2 2 4 max = 6(23)0 0 0 0 5 max = 5]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[[LeetCode]84.Largest Rectangle in Histogram 直方图中最大的矩形]]></title>
     <url>%2F2018%2F01%2F23%2F20180123-LeetCode-84-Largest-Rectangle-in-Histogram-%E7%9B%B4%E6%96%B9%E5%9B%BE%E4%B8%AD%E6%9C%80%E5%A4%A7%E7%9A%84%E7%9F%A9%E5%BD%A2%2F</url>
     <content type="text"><![CDATA[Given n non-negative integers representing the histogram’s bar height where the width of each bar is 1, find the area of largest rectangle in the histogram. Above is a histogram where width of each bar is 1, given height = [2,1,5,6,2,3].The largest rectangle is shown in the shaded area, which has area = 10 unit. For example,Given height = [2,1,5,6,2,3],return 10. 对数组进行遍历：对第一个元素 2 ，找2前后比2大的数，0个。面积=21=2第二个元素 1，前后比1大的，有5个。面积 = 16 =6第三个元素 5，有1个比5大的，面积 52 =10第四个元素6，有0个比6大的，面积 = 61 =6第五个元素2，有4个比2大的，面积 = 24 =8第六个元素3，有0个比3大的，面积 = 31 =3 最大面积 10]]></content>
@@ -231,8 +264,8 @@
         <category>Objective-C</category>
       </categories>
       <tags>
-        <tag>MRC</tag>
         <tag>Block</tag>
+        <tag>MRC</tag>
         <tag>Objective-C</tag>
       </tags>
   </entry>
