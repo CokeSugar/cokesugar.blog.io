@@ -190,8 +190,8 @@
         <category>Objective-C</category>
       </categories>
       <tags>
-        <tag>iOS</tag>
         <tag>Objective-C</tag>
+        <tag>iOS</tag>
         <tag>category</tag>
       </tags>
   </entry>
@@ -252,8 +252,8 @@
         <category>Objective-C</category>
       </categories>
       <tags>
-        <tag>iOS</tag>
         <tag>Objective-C</tag>
+        <tag>iOS</tag>
       </tags>
   </entry>
   <entry>
@@ -264,8 +264,8 @@
         <category>Objective-C</category>
       </categories>
       <tags>
-        <tag>Block</tag>
         <tag>MRC</tag>
+        <tag>Block</tag>
         <tag>Objective-C</tag>
       </tags>
   </entry>
